@@ -16,7 +16,7 @@ class PatientAccount extends StatelessWidget {
             padding: const EdgeInsetsDirectional.only(end: 80.0),
             child: Container(
               width: MediaQuery.of(context).size.width * 0.9,
-              height: 400,
+              height: 450,
               decoration: BoxDecoration(
                   color: Colors.white, borderRadius: BorderRadius.circular(30)),
               child: Padding(
@@ -144,7 +144,7 @@ class PatientAccount extends StatelessWidget {
                                   ],
                                 ),
                         ),
-                      const SizedBox(
+                        const SizedBox(
                           width: 30,
                         ),
                         InkWell(
@@ -205,7 +205,6 @@ class PatientAccount extends StatelessWidget {
                                   ],
                                 ),
                         ),
-                      
                       ],
                     ),
                     DrAidCubit.get(context).accountAndRevenues[
@@ -217,6 +216,5 @@ class PatientAccount extends StatelessWidget {
             ),
           );
         });
- 
   }
 }

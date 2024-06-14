@@ -7,10 +7,10 @@ class AllAccounts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsetsDirectional.only(end: 80.0),
+      padding: const EdgeInsetsDirectional.only(end: 50.0),
       child: Container(
         width: MediaQuery.of(context).size.width * 0.9,
-        height: 550,
+        height: 350,
         decoration: BoxDecoration(
             color: Colors.white, borderRadius: BorderRadius.circular(30)),
         child: Column(
@@ -35,28 +35,28 @@ class AllAccounts extends StatelessWidget {
                     style: TextStyle(fontSize: 18, color: fontColor),
                   ),
                   SizedBox(
-                    width: 85,
+                    width: 100,
                   ),
                   Text(
                     'الخطة العلاجية',
                     style: TextStyle(fontSize: 18, color: fontColor),
                   ),
                   SizedBox(
-                    width: 120,
+                    width: 100,
                   ),
                   Text(
                     'بيان حساب',
                     style: TextStyle(fontSize: 18, color: fontColor),
                   ),
                   SizedBox(
-                    width: 80,
+                    width: 90,
                   ),
                   Text(
                     'الدفعات',
                     style: TextStyle(fontSize: 18, color: fontColor),
                   ),
                   SizedBox(
-                    width: 70,
+                    width: 90,
                   ),
                   Text(
                     'الخيارات',
@@ -113,71 +113,54 @@ class AllAccounts extends StatelessWidget {
                             style: TextStyle(fontSize: 16, color: fontColor),
                           ),
                           const SizedBox(
-                            width: 55,
+                            width: 140,
                           ),
                           Container(
                             // width: 250,
-                            // height: 50,
+                            height: 30,
                             decoration: BoxDecoration(
                               color: blueText,
                               borderRadius: BorderRadius.circular(30),
                             ),
                             child: InkWell(
-                              onTap: () {},
-                              child: const Padding(
-                                  padding:
-                                      EdgeInsetsDirectional.only(start: 30),
+                                onTap: () {},
+                                child: const Center(
                                   child: Text(
-                                    'بيان حساب المريض',
+                                    '  بيان حساب المريض  ',
                                     style: TextStyle(
-                                      fontSize: 10,
+                                      fontSize: 12,
                                       color: Colors.white,
                                     ),
-                                  )),
-                            ),
+                                  ),
+                                )),
                           ),
                           const SizedBox(
-                            width: 55,
+                            width: 65,
                           ),
                           Container(
                             // width: 250,
-                            // height: 50,
+                            height: 30,
                             decoration: BoxDecoration(
                               color: coolGreen1,
                               borderRadius: BorderRadius.circular(30),
                             ),
                             child: InkWell(
                               onTap: () {},
-                              child: const Padding(
-                                  padding:
-                                      EdgeInsetsDirectional.only(start: 30),
-                                  child: Text(
-                                    '+إضافة دفعة جديدة',
-                                    style: TextStyle(
-                                      fontSize: 10,
-                                      color: Colors.white,
-                                    ),
-                                  )),
+                              child: const Center(
+                                child: Text(
+                                  '  إضافة دفعة جديدة  ',
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
                             ),
                           ),
                           const SizedBox(
-                            width: 50,
+                            width: 80,
                           ),
 
-                          // const CircleAvatar(
-                          //   backgroundColor: circulerAvatarColor,
-                          //   radius: 15,
-                          //   child: Icon(
-                          //     Icons.add,
-                          //     color: color,
-                          //   ),
-                          // ),
-                          // const SizedBox(
-                          //   width: 50,
-                          // ),
-                          const SizedBox(
-                            width: 50,
-                          ),
                           Container(
                             width: 70,
                             height: 40,
