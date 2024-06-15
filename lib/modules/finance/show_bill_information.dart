@@ -172,7 +172,7 @@ class ShowBillInformation extends StatelessWidget {
                                             radius: 15,
                                             child: Icon(
                                               Icons.add,
-                                              color: color,
+                                              color: white,
                                             ),
                                           ),
                                           // const SizedBox(

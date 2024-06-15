@@ -29,7 +29,6 @@ class LoginFormField extends StatelessWidget {
   }
 }
 
-
 class LoginButtonWidget extends StatelessWidget {
   const LoginButtonWidget({
     super.key,
@@ -64,7 +63,6 @@ class LoginButtonWidget extends StatelessWidget {
     );
   }
 }
-
 
 class DefaultFormField extends StatelessWidget {
   final TextEditingController controller;
@@ -455,3 +453,65 @@ void navigateAndFinish(context, widget) => Navigator.pushAndRemoveUntil(
       ),
       (Route<dynamic> route) => false,
     );
+
+class MyDatePicker extends StatefulWidget {
+  final String title;
+  final DateTime initialDate;
+
+  const MyDatePicker(
+      {super.key, required this.title, required this.initialDate});
+
+  @override
+  // ignore: library_private_types_in_public_api, no_logic_in_create_state
+  _MyDatePickerState createState() => _MyDatePickerState(initialDate);
+}
+
+class _MyDatePickerState extends State<MyDatePicker> {
+  late DateTime _selectedDate;
+  _MyDatePickerState(this._selectedDate);
+
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: _selectedDate,
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2025),
+    );
+    if (picked != null && picked != _selectedDate) {
+      setState(() {
+        _selectedDate = picked;
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        const SizedBox(height: 10),
+        ElevatedButton(
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all<Color>(datePickerColor),
+          ),
+          onPressed: () => _selectDate(context),
+          child: Row(
+            children: [
+              const Icon(
+                Icons.date_range_outlined,
+                color: blueText,
+              ),
+              const SizedBox(width: 20),
+              Text(
+                widget.title,
+                style: const TextStyle(color: blueText),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(height: 10),
+        // Text('Selected Date: ${_selectedDate.toIso8601String()}'),
+      ],
+    );
+  }
+}
