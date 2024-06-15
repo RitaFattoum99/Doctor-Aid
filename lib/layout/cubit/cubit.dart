@@ -8,6 +8,11 @@ import 'package:draid/models/create_patient.dart';
 import 'package:draid/modules/finance/account_and_revenues/all_accounts.dart';
 import 'package:draid/modules/finance/account_and_revenues/debts_patient.dart';
 import 'package:draid/modules/finance/account_and_revenues/revenues.dart';
+import 'package:draid/modules/finance/bill_payments.dart';
+import 'package:draid/modules/finance/bill_payments/all_payments.dart';
+import 'package:draid/modules/finance/bill_payments/expenses.dart';
+import 'package:draid/modules/finance/bill_payments/incomplete_bill.dart';
+import 'package:draid/modules/finance/bill_payments/provider.dart';
 import 'package:draid/modules/finance/patient_account.dart';
 import 'package:draid/modules/finance/show_bill_information.dart';
 import 'package:draid/modules/patient/attachments/attachments_screen.dart';
@@ -192,16 +197,23 @@ class DrAidCubit extends Cubit<DrAidStates> {
     const DiseaseScreen(),
   ];
 
-  List<Widget> bottomFinancescreens = [
-    const ShowBillInformation(),
-    const PatientAccount(),
-    TreatmentsInformation(),
+  List<Widget> bottomFinancescreens = const [
+    ShowBillInformation(),
+    PatientAccount(), // --> accountAndRevenues
+    BillPayments(), // --> paymentsAndBillAndExpensesAndProvider
   ];
 
   List<Widget> accountAndRevenues = const [
     AllAccounts(),
     Revenues(),
     DebtsPatient(),
+  ];
+
+  List<Widget> paymentsAndBillAndExpensesAndProvider = const [
+    AllPayments(),
+    IncompleteBill(),
+    Expenses(),
+    Provider(),
   ];
   void changeTreatmentIndex(int treatmentIndex) {
     treatmentindex = treatmentIndex;

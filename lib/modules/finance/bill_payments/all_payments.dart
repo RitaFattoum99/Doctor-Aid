@@ -1,8 +1,8 @@
-import 'package:draid/shared/styles/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:draid/shared/styles/colors.dart';
 
-class DebtsPatient extends StatelessWidget {
-  const DebtsPatient({super.key});
+class AllPayments extends StatelessWidget {
+  const AllPayments({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,40 +23,36 @@ class DebtsPatient extends StatelessWidget {
               child: Row(
                 //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
+                  SizedBox(
+                    width: 50,
+                  ),
                   Text(
-                    'المريض',
+                    'المعرف',
                     style: TextStyle(fontSize: 18, color: fontColor),
                   ),
                   SizedBox(
-                    width: 100,
+                    width: 120,
                   ),
                   Text(
                     'دفعة',
                     style: TextStyle(fontSize: 18, color: fontColor),
                   ),
                   SizedBox(
-                    width: 110,
+                    width: 120,
                   ),
                   Text(
-                    'الخطة العلاجية',
+                    'الفاتورة',
                     style: TextStyle(fontSize: 18, color: fontColor),
                   ),
                   SizedBox(
-                    width: 80,
+                    width: 120,
                   ),
                   Text(
-                    'بيان حساب',
+                    'التاريخ',
                     style: TextStyle(fontSize: 18, color: fontColor),
                   ),
                   SizedBox(
                     width: 100,
-                  ),
-                  Text(
-                    'الدفعات',
-                    style: TextStyle(fontSize: 18, color: fontColor),
-                  ),
-                  SizedBox(
-                    width: 90,
                   ),
                   Text(
                     'الخيارات',
@@ -71,8 +67,14 @@ class DebtsPatient extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            const Divider(
-              color: dividerColor,
+            Row(
+              children: [
+                Container(
+                  width: 900,
+                  height: 1,
+                  color: dividerColor,
+                ),
+              ],
             ),
             const SizedBox(
               height: 10,
@@ -85,15 +87,15 @@ class DebtsPatient extends StatelessWidget {
                       child: Row(
                         //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          // const SizedBox(
-                          //   width: 80,
-                          // ),
+                          const SizedBox(
+                            width: 80,
+                          ),
                           const Text(
-                            'محمد محمد',
+                            '1',
                             style: TextStyle(fontSize: 16, color: fontColor),
                           ),
                           const SizedBox(
-                            width: 70,
+                            width: 100,
                           ),
                           const Text(
                             '200,000 ل.س',
@@ -103,58 +105,19 @@ class DebtsPatient extends StatelessWidget {
                             width: 100,
                           ),
                           const Text(
-                            '1',
+                            '134',
                             style: TextStyle(fontSize: 16, color: fontColor),
                           ),
                           const SizedBox(
                             width: 120,
                           ),
-                          Container(
-                            width: 130,
-                            height: 35,
-                            decoration: BoxDecoration(
-                              color: blueText,
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                            child: InkWell(
-                                onTap: () {},
-                                child: const Center(
-                                  child: Text(
-                                    '  بيان حساب المريض  ',
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                )),
+                          const Text(
+                            '20-8-2024',
+                            style: TextStyle(fontSize: 16, color: fontColor),
                           ),
                           const SizedBox(
-                            width: 65,
-                          ),
-                          Container(
                             width: 100,
-                            height: 35,
-                            decoration: BoxDecoration(
-                              color: coolGreen1,
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                            child: InkWell(
-                              onTap: () {},
-                              child: const Center(
-                                child: Text(
-                                  '  إضافة دفعة  ',
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                            ),
                           ),
-                          const SizedBox(
-                            width: 80,
-                          ),
-
                           Container(
                             width: 70,
                             height: 40,

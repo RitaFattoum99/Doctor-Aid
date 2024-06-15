@@ -5,14 +5,9 @@ import 'package:draid/shared/styles/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class Revenues extends StatefulWidget {
-  const Revenues({super.key});
+class Provider extends StatelessWidget {
+  const Provider({super.key});
 
-  @override
-  State<Revenues> createState() => _RevenuesState();
-}
-
-class _RevenuesState extends State<Revenues> {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<DrAidCubit, DrAidStates>(
@@ -25,6 +20,19 @@ class _RevenuesState extends State<Revenues> {
             ),
             Row(
               children: [
+                MyDatePicker(title: 'اختر مزود', initialDate: DateTime.now()),
+                const SizedBox(width: 20),
+                const SizedBox(
+                  height: 40,
+                  child: VerticalDivider(
+                    width: 10,
+                    thickness: 1,
+                    indent: 10,
+                    endIndent: 1,
+                    color: Colors.grey,
+                  ),
+                ),
+                const SizedBox(width: 20),
                 MyDatePicker(title: 'من تاريخ', initialDate: DateTime.now()),
                 const SizedBox(width: 20),
                 const SizedBox(

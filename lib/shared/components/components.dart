@@ -515,3 +515,41 @@ class _MyDatePickerState extends State<MyDatePicker> {
     );
   }
 }
+
+class CustomSearchField extends StatelessWidget {
+  final IconData icon;
+  final String hintText;
+  final TextEditingController controller;
+  final ValueChanged<String>? onChanged;
+
+  const CustomSearchField({
+    super.key,
+    required this.icon,
+    required this.hintText,
+    required this.controller,
+    this.onChanged,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      controller: controller,
+      onChanged: onChanged,
+      decoration: InputDecoration(
+        prefixIcon: Icon(
+          icon,
+          color: blueText,
+        ),
+        hintText: hintText,
+        hintStyle: const TextStyle(color: blueText),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(25.0),
+          borderSide: BorderSide.none,
+        ),
+        filled: true,
+        fillColor: datePickerColor,
+        contentPadding: const EdgeInsets.all(16.0),
+      ),
+    );
+  }
+}

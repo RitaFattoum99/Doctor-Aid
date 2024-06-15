@@ -5,14 +5,9 @@ import 'package:draid/shared/styles/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class Revenues extends StatefulWidget {
-  const Revenues({super.key});
+class Expenses extends StatelessWidget {
+  const Expenses({super.key});
 
-  @override
-  State<Revenues> createState() => _RevenuesState();
-}
-
-class _RevenuesState extends State<Revenues> {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<DrAidCubit, DrAidStates>(

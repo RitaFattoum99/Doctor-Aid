@@ -5,8 +5,8 @@ import 'package:draid/shared/styles/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class PatientAccount extends StatelessWidget {
-  const PatientAccount({super.key});
+class BillPayments extends StatelessWidget {
+  const BillPayments({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +42,7 @@ class PatientAccount extends StatelessWidget {
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
                                         const Text(
-                                          'كامل الحسابات',
+                                          'كامل الدفعات',
                                           style: TextStyle(
                                               fontSize: 20, color: fontColor4),
                                         ),
@@ -70,7 +70,7 @@ class PatientAccount extends StatelessWidget {
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
                                         const Text(
-                                          'كامل الحسابات',
+                                          'كامل الدفعات',
                                           style: TextStyle(
                                               fontSize: 20, color: fontColor3),
                                         ),
@@ -107,7 +107,7 @@ class PatientAccount extends StatelessWidget {
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
                                         const Text(
-                                          'حساب الإيرادات',
+                                          'الفواتير غير المكتملة',
                                           style: TextStyle(
                                               fontSize: 20, color: fontColor4),
                                         ),
@@ -135,7 +135,7 @@ class PatientAccount extends StatelessWidget {
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
                                         const Text(
-                                          'حساب الإيرادات',
+                                          'الفواتير غير المكتملة',
                                           style: TextStyle(
                                               fontSize: 20, color: fontColor3),
                                         ),
@@ -172,7 +172,7 @@ class PatientAccount extends StatelessWidget {
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
                                         const Text(
-                                          'المرضى الذين عليهم ديون',
+                                          'إجمالي المصاريف',
                                           style: TextStyle(
                                               fontSize: 20, color: fontColor4),
                                         ),
@@ -200,7 +200,72 @@ class PatientAccount extends StatelessWidget {
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
                                         const Text(
-                                          'المرضى الذين عليهم ديون',
+                                          'إجمالي المصاريف',
+                                          style: TextStyle(
+                                              fontSize: 20, color: fontColor3),
+                                        ),
+                                        Container(
+                                          width: 90,
+                                          height: 3,
+                                          decoration: const BoxDecoration(
+                                            gradient: LinearGradient(
+                                              begin: Alignment.topLeft,
+                                              end: Alignment.bottomRight,
+                                              colors: [
+                                                Colors.white,
+                                                Colors.white,
+                                              ],
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                            ),
+                            const SizedBox(
+                              width: 30,
+                            ),
+                            InkWell(
+                              onTap: () {
+                                DrAidCubit.get(context).changeMedicineIndex(3);
+                              },
+                              child: DrAidCubit.get(context).medicineindex == 3
+                                  ? Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        const Text(
+                                          'بيان حساب مزود',
+                                          style: TextStyle(
+                                              fontSize: 20, color: fontColor4),
+                                        ),
+                                        Container(
+                                          width: 90,
+                                          height: 3,
+                                          decoration: const BoxDecoration(
+                                            gradient: LinearGradient(
+                                              begin: Alignment.topLeft,
+                                              end: Alignment.bottomRight,
+                                              colors: [
+                                                linearGradiant1,
+                                                linearGradiant2,
+                                              ],
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    )
+                                  : Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        const Text(
+                                          'بيان حساب مزود',
                                           style: TextStyle(
                                               fontSize: 20, color: fontColor3),
                                         ),
@@ -223,21 +288,20 @@ class PatientAccount extends StatelessWidget {
                             ),
                           ],
                         ),
-                        if (DrAidCubit.get(context).medicineindex == 0 || DrAidCubit.get(context).medicineindex == 2)
-                          Flexible(
-                            child: SizedBox(
-                              width: 200,
-                              child: CustomSearchField(
-                                icon: Icons.search,
-                                hintText: 'بحث عن مريض',
-                                controller: TextEditingController(),
-                              ),
+                        Flexible(
+                          child: SizedBox(
+                            width: 200,
+                            child: CustomSearchField(
+                              icon: Icons.search,
+                              hintText: 'بحث عن دفعة',
+                              controller: TextEditingController(),
                             ),
                           ),
+                        ),
                       ],
                     ),
-
-                    DrAidCubit.get(context).accountAndRevenues[
+                    DrAidCubit.get(context)
+                            .paymentsAndBillAndExpensesAndProvider[
                         DrAidCubit.get(context).medicineindex],
                     // buildMedicineItem(context),
                   ],

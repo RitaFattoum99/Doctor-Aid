@@ -10,7 +10,7 @@ class AllAccounts extends StatelessWidget {
       padding: const EdgeInsetsDirectional.only(end: 50.0),
       child: Container(
         width: MediaQuery.of(context).size.width * 0.9,
-        height: 350,
+        height: 300,
         decoration: BoxDecoration(
             color: Colors.white, borderRadius: BorderRadius.circular(30)),
         child: Column(
@@ -28,28 +28,28 @@ class AllAccounts extends StatelessWidget {
                     style: TextStyle(fontSize: 18, color: fontColor),
                   ),
                   SizedBox(
-                    width: 90,
+                    width: 100,
                   ),
                   Text(
                     'دفعة',
                     style: TextStyle(fontSize: 18, color: fontColor),
                   ),
                   SizedBox(
-                    width: 100,
+                    width: 110,
                   ),
                   Text(
                     'الخطة العلاجية',
                     style: TextStyle(fontSize: 18, color: fontColor),
                   ),
                   SizedBox(
-                    width: 100,
+                    width: 80,
                   ),
                   Text(
                     'بيان حساب',
                     style: TextStyle(fontSize: 18, color: fontColor),
                   ),
                   SizedBox(
-                    width: 90,
+                    width: 100,
                   ),
                   Text(
                     'الدفعات',
@@ -71,14 +71,8 @@ class AllAccounts extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            Row(
-              children: [
-                Container(
-                  width: 900,
-                  height: 1,
-                  color: dividerColor,
-                ),
-              ],
+            const Divider(
+              color: dividerColor,
             ),
             const SizedBox(
               height: 10,
@@ -106,18 +100,18 @@ class AllAccounts extends StatelessWidget {
                             style: TextStyle(fontSize: 16, color: fontColor),
                           ),
                           const SizedBox(
-                            width: 80,
+                            width: 100,
                           ),
                           const Text(
                             '1',
                             style: TextStyle(fontSize: 16, color: fontColor),
                           ),
                           const SizedBox(
-                            width: 140,
+                            width: 120,
                           ),
                           Container(
-                            // width: 250,
-                            height: 30,
+                            width: 130,
+                            height: 35,
                             decoration: BoxDecoration(
                               color: blueText,
                               borderRadius: BorderRadius.circular(30),
@@ -138,8 +132,8 @@ class AllAccounts extends StatelessWidget {
                             width: 65,
                           ),
                           Container(
-                            // width: 250,
-                            height: 30,
+                            width: 100,
+                            height: 35,
                             decoration: BoxDecoration(
                               color: coolGreen1,
                               borderRadius: BorderRadius.circular(30),
@@ -148,7 +142,7 @@ class AllAccounts extends StatelessWidget {
                               onTap: () {},
                               child: const Center(
                                 child: Text(
-                                  '  إضافة دفعة جديدة  ',
+                                  '  إضافة دفعة  ',
                                   style: TextStyle(
                                     fontSize: 12,
                                     color: Colors.white,
@@ -194,8 +188,8 @@ class AllAccounts extends StatelessWidget {
                     );
                   },
                   separatorBuilder: (context, index) {
-                    return const SizedBox(
-                      height: 10,
+                    return const Divider(
+                      color: borderColor,
                     );
                   },
                   itemCount: 30),
