@@ -1,12 +1,12 @@
 import 'package:draid/layout/cubit/cubit.dart';
 import 'package:draid/layout/cubit/states.dart';
-import 'package:draid/layout/finance_layout/finance_layout.dart';
+// import 'package:draid/layout/finance_layout/finance_layout.dart';
 // import 'package:draid/layout/patient_layout/patient_information_layout.dart';
 // import 'package:draid/modules/finance/bill_information.dart';
 // import 'package:draid/modules/alltreatments/show_treatments.dart';
 // import 'package:draid/modules/addclinic/add_clinic.dart';
 // import 'package:draid/modules/alltreatments/show_treatments.dart';
-// import 'package:draid/modules/dashboard/dashboard_screen.dart';
+import 'package:draid/modules/dashboard/dashboard_screen.dart';
 // import 'package:draid/modules/login/login_screen.dart';
 import 'package:draid/shared/bloc_observer.dart';
 import 'package:draid/shared/network/local/cache_helper.dart';
@@ -19,7 +19,7 @@ void main() async {
   DioHelper.init();
   await CacheHelper.init();
   Widget widget;
-  widget = const FinanceLayout();
+  widget = const DashboardScreen();
 
   runApp(MyApp(
     startWidget: widget,
