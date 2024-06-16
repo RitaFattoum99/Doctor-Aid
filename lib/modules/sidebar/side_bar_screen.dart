@@ -29,14 +29,13 @@ class _SideBarScreenState extends State<SideBarScreen> {
                 selectedLabelTextStyle: TextStyle(color: Colors.blue.shade400),
                 destinations: const [
                   NavigationRailDestination(
-                    icon: SvgIcon(
-                      icon: SvgIconData(
-                        'images/vector.svg',
+                      icon: SvgIcon(
+                        icon: SvgIconData(
+                          'images/vector.svg',
+                        ),
+                        size: 20,
                       ),
-                      size: 20,
-                    ),
-                    label: Text('الرئيسية'),
-                  ),
+                      label: Text('الرئيسية')),
                   NavigationRailDestination(
                     icon: SvgIcon(
                       icon: SvgIconData(

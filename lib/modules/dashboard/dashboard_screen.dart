@@ -20,41 +20,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorManager.backgroundColor,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Row(
-            children: [
-              Image.asset(
-                'images/dental_logo1.png',
-                width: 75,
-                height: 75,
-              ),
-              const SizedBox(
-                width: 10,
-              ),
-              Text(
-                'Dental Care',
-                style: TextStyle(
-                  color: Colors.blue.shade400,
-                  fontSize: 28,
-                ),
-              ),
-            ],
-          ),
-        ),
-        actions: const [
-          Padding(
-            padding: EdgeInsetsDirectional.only(end: 20, top: 5),
-            child: CircleAvatar(
-              backgroundImage: NetworkImage(
-                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgXMB05f5uqY5HFXRymjfYv7eevihHiipha3H8-4IQQxpAu9QQ8JCr770qcU29C9zECDs&usqp=CAU'),
-              radius: 30,
-            ),
-          ),
-        ],
-      ),
+      appBar: CustomAppBar(),
       body: Row(
         children: [
           const SideBarScreen(),
@@ -79,7 +45,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           num: 4,
                           text: 'العيادات',
                         ),
-                        onTap: (){
+                        onTap: () {
                           navigateTo(
                             context,
                             const Directionality(

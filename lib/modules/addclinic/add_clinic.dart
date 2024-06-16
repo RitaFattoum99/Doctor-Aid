@@ -274,17 +274,17 @@ class _AddClinicScreenState extends State<AddClinicScreen> {
               InkWell(
                 onTap: () {
                   print(5);
-                   // DrAidCubit.get(context).addClinic(
-                   //     name: 'testfgv555665',
-                   //     token: 'test',
-                   //     address: 'address',
-                   //     telePhoneNumber: 'telePhoneNumber',
-                   //     phoneNumber: 'phoneNumber',
-                   //     whatsappNumber: 'whatsappNumber',
-                   //     ownerName: 'ownerName',
-                   //     ownerAddress: 'ownerAddress',
-                   //     ownerPhone: 'ownerPhone'
-                   // );
+                  // DrAidCubit.get(context).addClinic(
+                  //     name: 'testfgv555665',
+                  //     token: 'test',
+                  //     address: 'address',
+                  //     telePhoneNumber: 'telePhoneNumber',
+                  //     phoneNumber: 'phoneNumber',
+                  //     whatsappNumber: 'whatsappNumber',
+                  //     ownerName: 'ownerName',
+                  //     ownerAddress: 'ownerAddress',
+                  //     ownerPhone: 'ownerPhone'
+                  // );
                   // DrAidCubit.get(context).createPatient(
                   //     address: 'address',
                   //     age: 'age',
@@ -302,9 +302,9 @@ class _AddClinicScreenState extends State<AddClinicScreen> {
                   // );
 
                   DrAidCubit.get(context).createDisease(
-                      patientId: 1,
-                      diseseList: 'diseseList',
-                      notes: 'notes',
+                    patientId: 1,
+                    diseseList: 'diseseList',
+                    notes: 'notes',
                   );
                 },
                 child: Container(
@@ -367,51 +367,7 @@ class _AddClinicScreenState extends State<AddClinicScreen> {
       builder: (context, state) {
         return Scaffold(
           backgroundColor: coolWhite2,
-          appBar: AppBar(
-            backgroundColor: white,
-            title: Padding(
-              padding: const EdgeInsets.all(20),
-              child: Row(
-                children: [
-                  Image.asset(
-                    'images/dental_logo1.png',
-                    width: 75,
-                    height: 75,
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    'Dental Care',
-                    style: TextStyle(
-                      color: Colors.blue.shade400,
-                      fontSize: 28,
-                      // fontWeight: FontWeight.bold
-                    ),
-                  ),
-
-                  // SvgPicture.asset(
-                  //   'images/dental_logo.svg', // replace with the actual SVG file name and extension
-                  //   width: 20, // optional, sets the width of the icon
-                  //   height: 20, // optional, sets the height of the icon
-                  //   color: Colors.grey, // optional, sets the color of the icon
-                  // )// optional, sets the color of the icon
-
-                  // NavBar(),
-                ],
-              ),
-            ),
-            actions: const [
-              Padding(
-                padding: EdgeInsetsDirectional.only(end: 20, top: 5),
-                child: CircleAvatar(
-                  backgroundImage: NetworkImage(
-                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgXMB05f5uqY5HFXRymjfYv7eevihHiipha3H8-4IQQxpAu9QQ8JCr770qcU29C9zECDs&usqp=CAU'),
-                  radius: 30,
-                ),
-              ),
-            ],
-          ),
+          appBar: CustomAppBar(),
           body: Row(
             children: [const SideBarScreen(), buildAddClinic(context)],
           ),

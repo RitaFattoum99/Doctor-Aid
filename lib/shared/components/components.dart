@@ -5,6 +5,8 @@ import 'package:draid/shared/styles/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+
+
 class LoginFormField extends StatelessWidget {
   final String hintText;
   final Color color;
@@ -550,6 +552,49 @@ class CustomSearchField extends StatelessWidget {
         fillColor: datePickerColor,
         contentPadding: const EdgeInsets.all(16.0),
       ),
+    );
+  }
+}
+class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      backgroundColor: Colors.white,
+      title: Padding(
+        padding: const EdgeInsets.only(top: 20, bottom: 20),
+        child: Row(
+          children: [
+            Image.asset(
+              'images/dental_logo1.png',
+              width: 50,
+              height: 50,
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+            Text(
+              'Dental Care',
+              style: TextStyle(
+                color: Colors.blue.shade400,
+                fontSize: 26,
+              ),
+            ),
+          ],
+        ),
+      ),
+      actions: const [
+        Padding(
+          padding: EdgeInsetsDirectional.only(end: 20, top: 5),
+          child: CircleAvatar(
+            backgroundImage: NetworkImage(
+                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgXMB05f5uqY5HFXRymjfYv7eevihHiipha3H8-4IQQxpAu9QQ8JCr770qcU29C9zECDs&usqp=CAU'),
+            radius: 20,
+          ),
+        ),
+      ],
     );
   }
 }
