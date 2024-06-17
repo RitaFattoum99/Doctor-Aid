@@ -20,7 +20,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorManager.backgroundColor,
-      appBar: CustomAppBar(),
+      appBar: const CustomAppBar(),
       body: Row(
         children: [
           const SideBarScreen(),

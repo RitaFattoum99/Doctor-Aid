@@ -1,6 +1,7 @@
 import 'package:draid/shared/components/components.dart';
 import 'package:draid/shared/styles/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class Login extends StatelessWidget {
   const Login({super.key});
@@ -18,16 +19,18 @@ class Login extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset(
-                    'images/dental_logo1.png',
-                    width: 200,
-                    height: 200,
-                  ),
-                  // SvgPicture.asset(
-                  //   'images/dental_logo.svg',
+                  // Image.asset(
+                  //   'images/dental_logo1.png',
                   //   width: 200,
                   //   height: 200,
                   // ),
+
+                  SvgPicture.asset(
+                    'images/logo.svg',
+                    semanticsLabel: 'My SVG Image',
+                    height: 120,
+                    width: 120,
+                  ),
                   Text(
                     'Doctor Aid',
                     style: TextStyle(
@@ -61,7 +64,7 @@ class Login extends StatelessWidget {
                     const SizedBox(height: 20),
                     LoginFormField(
                       controller: emailController,
-                      hintText: 'اسم العيادة',
+                      hintText: 'الحساب الإلكتروني',
                       color: Colors.white,
                     ),
                     const SizedBox(height: 25),

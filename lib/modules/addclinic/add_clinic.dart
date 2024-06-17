@@ -367,7 +367,7 @@ class _AddClinicScreenState extends State<AddClinicScreen> {
       builder: (context, state) {
         return Scaffold(
           backgroundColor: coolWhite2,
-          appBar: CustomAppBar(),
+          appBar: const CustomAppBar(),
           body: Row(
             children: [const SideBarScreen(), buildAddClinic(context)],
           ),

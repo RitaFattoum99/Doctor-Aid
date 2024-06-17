@@ -6,8 +6,8 @@ import 'package:draid/layout/cubit/states.dart';
 // import 'package:draid/modules/alltreatments/show_treatments.dart';
 // import 'package:draid/modules/addclinic/add_clinic.dart';
 // import 'package:draid/modules/alltreatments/show_treatments.dart';
-import 'package:draid/modules/dashboard/dashboard_screen.dart';
-// import 'package:draid/modules/login/login_screen.dart';
+// import 'package:draid/modules/dashboard/dashboard_screen.dart';
+import 'package:draid/modules/login/login_screen.dart';
 import 'package:draid/shared/bloc_observer.dart';
 import 'package:draid/shared/network/local/cache_helper.dart';
 import 'package:draid/shared/network/remote/dio_helper.dart';
@@ -19,7 +19,7 @@ void main() async {
   DioHelper.init();
   await CacheHelper.init();
   Widget widget;
-  widget = const DashboardScreen();
+  widget = const Login();
 
   runApp(MyApp(
     startWidget: widget,

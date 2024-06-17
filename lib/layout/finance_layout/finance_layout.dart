@@ -26,10 +26,10 @@ class _FinanceLayoutState extends State<FinanceLayout> {
     return BlocConsumer<DrAidCubit, DrAidStates>(
       listener: (context, state) {},
       builder: (context, state) {
-        return Scaffold(
+        return const Scaffold(
           backgroundColor: coolWhite2,
           appBar: CustomAppBar(),
-          body: const Row(
+          body: Row(
             children: [SideBarScreen(), Bill()],
           ),
         );

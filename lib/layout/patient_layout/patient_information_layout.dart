@@ -574,9 +574,9 @@ class _PatientInformationLayoutState extends State<PatientInformationLayout> {
     return BlocConsumer<DrAidCubit, DrAidStates>(
       listener: (context, state) {},
       builder: (context, state) {
-        return Scaffold(
+        return const Scaffold(
           appBar: CustomAppBar(),
-          body: const Row(
+          body: Row(
             children: [SideBarScreen(), PatientInformation()],
           ),
         );

@@ -556,6 +556,8 @@ class CustomSearchField extends StatelessWidget {
   }
 }
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const CustomAppBar({super.key});
+
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 

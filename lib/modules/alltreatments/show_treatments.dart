@@ -951,9 +951,8 @@ class _ShowAllTreatmentsState extends State<ShowAllTreatments> {
       builder: (context, state) {
         return Scaffold(
           backgroundColor: coolWhite2,
-                appBar: CustomAppBar(),
-
-           body: Row(
+          appBar: const CustomAppBar(),
+          body: Row(
             children: [
               const SideBarScreen(),
               SingleChildScrollView(
