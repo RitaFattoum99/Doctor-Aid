@@ -5,6 +5,7 @@ import 'package:draid/models/add_clinic_model.dart';
 import 'package:draid/models/create_disease_model.dart';
 import 'package:draid/models/create_medication_model.dart';
 import 'package:draid/models/create_patient.dart';
+import 'package:draid/models/user_model.dart';
 import 'package:draid/modules/finance/account_and_revenues/all_accounts.dart';
 import 'package:draid/modules/finance/account_and_revenues/debts_patient.dart';
 import 'package:draid/modules/finance/account_and_revenues/revenues.dart';
@@ -38,11 +39,64 @@ class DrAidCubit extends Cubit<DrAidStates> {
   int medicineindex = 0;
   bool checkBoxValue = false;
   String toothOrGum = 'سن';
+  UserModel? userModel;
   AddClinicModel? addClinicModel;
   CreatePatientModel? createPatientModel;
   CreateMedicationModel? createMedicationModel;
   CreateDiseaseModel? createDiseaseModel;
-  void addClinic({
+
+//  void login({
+//     required String email,
+//     required String password,
+//   }) {
+//     emit(DrAidLoadingState());
+
+//     DioHelper.postData(
+//       url: loginUrl,
+//       data: {
+//         'email': email,
+//         'password': password,
+//       },
+//     ).then((value) {
+//       if (value.data != null) {
+//         userModel = UserModel.fromJson(value.data);
+//         print("status: ${userModel?.status}");
+//         print("msg: ${userModel?.msg}");
+//         print("data: ${userModel?.userData}");
+//         print("token: ${userModel?.token}");
+//         emit(DrAidLoginSuccessState(userModel!));
+//       } else {
+//         print("Response data is null");
+//         emit(DrAidLoginErrorState("Response data is null"));
+//       }
+//     }).catchError((error) {
+//       print('Login Error: $error');
+//       emit(DrAidLoginErrorState(error.toString()));
+//     });
+//   }
+
+  void login({
+    required String email,
+    required String password,
+  }) {
+    DioHelper.signUpandLoginPostData(
+      url: loginUrl,
+      data: {
+        'email': email,
+        'password': password,
+      },
+    ).then((value) {
+      print(userModel?.status);
+      print(userModel?.userData);
+      print(userModel?.msg);
+      userModel = UserModel.fromJson(value.data);
+
+      print("owner name for login to clinic: ${userModel?.userData.ownerName}");
+      print("clinic name: ${userModel?.userData.name}");
+    });
+  }
+
+  void createClinic({
     required String name,
     required String token,
     required String address,
@@ -50,6 +104,7 @@ class DrAidCubit extends Cubit<DrAidStates> {
     required String phoneNumber,
     required String whatsappNumber,
     required String ownerName,
+    required String userEmail,
     required String ownerAddress,
     required String ownerPhone,
   }) {
@@ -62,14 +117,18 @@ class DrAidCubit extends Cubit<DrAidStates> {
               'phoneNumber': phoneNumber,
               'whatsappNumber': whatsappNumber,
               'ownerName': ownerName,
+              'userEmail': userEmail,
               'ownerAddress': ownerAddress,
               'ownerPhone': ownerPhone,
             },
-            token:
-                'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc0FkbWluIjp0cnVlLCJpZCI6MTUsImlhdCI6MTcwNTA5MTM1Mn0.1qs_WXlcjeFc3-Re7WWjsgkHmNEyYzI0TjsS7-q8pnw')
+            token: token
+            // 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZnVsbE5hbWUiOiLYo9it2YXYryDYtNmK2K4g2KfZhNi02KjYp9ioIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzE4NTczMjg0fQ.A1mSnG2O5jz8hy8OReQorjrCybqFNPdOx0mhSYNUbzM'
+            )
         .then((value) {
       // print(token);
       print(addClinicModel?.status);
+      print(addClinicModel?.clinicData);
+      print(addClinicModel?.message);
       addClinicModel = AddClinicModel.fromJson(value.data);
 
       print(addClinicModel?.clinicData.ownerName);
@@ -215,6 +274,7 @@ class DrAidCubit extends Cubit<DrAidStates> {
     Expenses(),
     Provider(),
   ];
+
   void changeTreatmentIndex(int treatmentIndex) {
     treatmentindex = treatmentIndex;
     emit(ChangeTreatmentState());

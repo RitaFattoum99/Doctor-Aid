@@ -1,8 +1,29 @@
-abstract class DrAidStates{}
+import 'package:draid/models/user_model.dart';
 
-class DrAidInitialState extends DrAidStates{}
-class ChangeBottomScreenState extends DrAidStates{}
-class ChangeMedicine extends DrAidStates{}
-class ChangeTreatmentState extends DrAidStates{}
-class ChangeCheckBoxState extends DrAidStates{}
-class ChangeToothOrGumState extends DrAidStates{}
+abstract class DrAidStates {}
+
+class DrAidInitialState extends DrAidStates {}
+
+class ChangeBottomScreenState extends DrAidStates {}
+
+class ChangeMedicine extends DrAidStates {}
+
+class ChangeTreatmentState extends DrAidStates {}
+
+class ChangeCheckBoxState extends DrAidStates {}
+
+class ChangeToothOrGumState extends DrAidStates {}
+
+class DrAidLoadingState extends DrAidStates {}
+
+class DrAidLoginSuccessState extends DrAidStates {
+  final UserModel userModel;
+
+  DrAidLoginSuccessState(this.userModel);
+}
+
+class DrAidLoginErrorState extends DrAidStates {
+  final String error;
+
+  DrAidLoginErrorState(this.error);
+}

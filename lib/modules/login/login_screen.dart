@@ -1,3 +1,6 @@
+// ignore_for_file: avoid_print
+
+import 'package:draid/layout/cubit/cubit.dart';
 import 'package:draid/shared/components/components.dart';
 import 'package:draid/shared/styles/colors.dart';
 import 'package:flutter/material.dart';
@@ -64,7 +67,7 @@ class Login extends StatelessWidget {
                     const SizedBox(height: 20),
                     LoginFormField(
                       controller: emailController,
-                      hintText: 'الحساب الإلكتروني',
+                      hintText: 'البريد الإلكتروني',
                       color: Colors.white,
                     ),
                     const SizedBox(height: 25),
@@ -74,7 +77,14 @@ class Login extends StatelessWidget {
                       color: Colors.white,
                     ),
                     const SizedBox(height: 100),
-                    const LoginButtonWidget(),
+                    LoginButtonWidget(onPressed: () {
+                      DrAidCubit.get(context).login(
+                          email: emailController.text,
+                          password: passwordController.text);
+
+                      print("email: ${emailController.text}");
+                      print("password: ${passwordController.text}");
+                    }),
                   ],
                 ),
               ),

@@ -1,6 +1,5 @@
 // ignore_for_file: deprecated_member_use
 
-import 'package:draid/modules/dashboard/dashboard_screen.dart';
 import 'package:draid/shared/styles/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -32,7 +31,10 @@ class LoginFormField extends StatelessWidget {
 }
 
 class LoginButtonWidget extends StatelessWidget {
+    final VoidCallback onPressed;
+
   const LoginButtonWidget({
+    required this.onPressed,
     super.key,
   });
 
@@ -46,17 +48,7 @@ class LoginButtonWidget extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10.0), // Rounded corners
             )),
-        onPressed: () {
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const Directionality(
-                textDirection: TextDirection.rtl,
-                child: DashboardScreen(),
-              ),
-            ),
-          );
-        },
+        onPressed: onPressed, 
         child: const Text(
           'تسجيل الدخول',
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),

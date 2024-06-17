@@ -20,12 +20,14 @@ class _AddClinicScreenState extends State<AddClinicScreen> {
 
   bool isExpanded = true;
   TextEditingController clinicName = TextEditingController();
-  TextEditingController ownerName = TextEditingController();
-  TextEditingController ownerAddress = TextEditingController();
   TextEditingController clinicAddress = TextEditingController();
   TextEditingController telephoneNumber = TextEditingController();
   TextEditingController phoneNumber = TextEditingController();
   TextEditingController whatsAppNumber = TextEditingController();
+  TextEditingController ownerName = TextEditingController();
+  TextEditingController userEmail = TextEditingController();
+  TextEditingController ownerAddress = TextEditingController();
+  TextEditingController ownerPhone = TextEditingController();
 
   Widget buildAddClinicItem(BuildContext context) {
     return Padding(
@@ -274,16 +276,17 @@ class _AddClinicScreenState extends State<AddClinicScreen> {
               InkWell(
                 onTap: () {
                   print(5);
-                  // DrAidCubit.get(context).addClinic(
-                  //     name: 'testfgv555665',
-                  //     token: 'test',
-                  //     address: 'address',
-                  //     telePhoneNumber: 'telePhoneNumber',
-                  //     phoneNumber: 'phoneNumber',
-                  //     whatsappNumber: 'whatsappNumber',
-                  //     ownerName: 'ownerName',
-                  //     ownerAddress: 'ownerAddress',
-                  //     ownerPhone: 'ownerPhone'
+                  //  DrAidCubit.get(context).createClinic(
+                  //             token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZnVsbE5hbWUiOiLYo9it2YXYryDYtNmK2K4g2KfZhNi02KjYp9ioIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzE4NjIxMTUwfQ.MKGlRqm9skM4hoHsHO2oBbnnintKNJj_5wR4Hjotof8",
+                  //             name: "عيادة حرستاالحديثة",
+                  //             address: "دمشق-حرستا",
+                  //             telePhoneNumber: "0116635648",
+                  //             phoneNumber: "+963957447524",
+                  //             whatsappNumber: "+963957447524",
+                  //             ownerName: "أحمد شيخ الشباب",
+                  //             userEmail: "hmedo@gmail.com",
+                  //             ownerAddress: "مزة شيخ سعد خلف جامع المزة الكبير",
+                  //             ownerPhone: "0962255185"
                   // );
                   // DrAidCubit.get(context).createPatient(
                   //     address: 'address',

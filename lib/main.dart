@@ -14,6 +14,8 @@ import 'package:draid/shared/network/remote/dio_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+//TODO: change index for finance screens
+
 void main() async {
   Bloc.observer = MyBlocObserver();
   DioHelper.init();
