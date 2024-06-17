@@ -45,40 +45,12 @@ class DrAidCubit extends Cubit<DrAidStates> {
   CreateMedicationModel? createMedicationModel;
   CreateDiseaseModel? createDiseaseModel;
 
-//  void login({
-//     required String email,
-//     required String password,
-//   }) {
-//     emit(DrAidLoadingState());
-
-//     DioHelper.postData(
-//       url: loginUrl,
-//       data: {
-//         'email': email,
-//         'password': password,
-//       },
-//     ).then((value) {
-//       if (value.data != null) {
-//         userModel = UserModel.fromJson(value.data);
-//         print("status: ${userModel?.status}");
-//         print("msg: ${userModel?.msg}");
-//         print("data: ${userModel?.userData}");
-//         print("token: ${userModel?.token}");
-//         emit(DrAidLoginSuccessState(userModel!));
-//       } else {
-//         print("Response data is null");
-//         emit(DrAidLoginErrorState("Response data is null"));
-//       }
-//     }).catchError((error) {
-//       print('Login Error: $error');
-//       emit(DrAidLoginErrorState(error.toString()));
-//     });
-//   }
-
   void login({
     required String email,
     required String password,
   }) {
+    emit(DrAidLoadingState());
+
     DioHelper.signUpandLoginPostData(
       url: loginUrl,
       data: {
@@ -86,15 +58,23 @@ class DrAidCubit extends Cubit<DrAidStates> {
         'password': password,
       },
     ).then((value) {
-      print(userModel?.status);
-      print(userModel?.userData);
-      print(userModel?.msg);
-      userModel = UserModel.fromJson(value.data);
-
-      print("owner name for login to clinic: ${userModel?.userData.ownerName}");
-      print("clinic name: ${userModel?.userData.name}");
+      if (value.data != null) {
+        userModel = UserModel.fromJson(value.data);
+        print("status: ${userModel?.status}");
+        print("msg: ${userModel?.msg}");
+        print("data: ${userModel?.userData}");
+        print("token: ${userModel?.token}");
+        emit(DrAidLoginSuccessState(userModel!));
+      } else {
+        print("Response data is null");
+        emit(DrAidLoginErrorState("Response data is null"));
+      }
+    }).catchError((error) {
+      print('Login Error: $error');
+      emit(DrAidLoginErrorState(error.toString()));
     });
   }
+
 
   void createClinic({
     required String name,
