@@ -79,9 +79,10 @@ class Login extends StatelessWidget {
                     const SizedBox(height: 100),
                     LoginButtonWidget(onPressed: () {
                       DrAidCubit.get(context).login(
-                          email: emailController.text,
-                          password: passwordController.text);
-
+                        email: emailController.text,
+                        password: passwordController.text,
+                        context: context,
+                      );
                       print("email: ${emailController.text}");
                       print("password: ${passwordController.text}");
                     }),

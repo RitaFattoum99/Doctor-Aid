@@ -6,6 +6,7 @@ import 'package:draid/models/create_disease_model.dart';
 import 'package:draid/models/create_medication_model.dart';
 import 'package:draid/models/create_patient.dart';
 import 'package:draid/models/user_model.dart';
+import 'package:draid/modules/dashboard/dashboard_screen.dart';
 import 'package:draid/modules/finance/account_and_revenues/all_accounts.dart';
 import 'package:draid/modules/finance/account_and_revenues/debts_patient.dart';
 import 'package:draid/modules/finance/account_and_revenues/revenues.dart';
@@ -24,6 +25,7 @@ import 'package:draid/modules/patient/show_basic_information.dart';
 import 'package:draid/modules/patient/treatments/complete_treatments.dart';
 import 'package:draid/modules/patient/treatments/treatments_information.dart';
 import 'package:draid/modules/patient/treatments/treatments_plans.dart';
+import 'package:draid/shared/components/components.dart';
 import 'package:draid/shared/network/remote/dio_helper.dart';
 import 'package:draid/shared/network/remote/end_points.dart';
 import 'package:flutter/material.dart';
@@ -48,6 +50,7 @@ class DrAidCubit extends Cubit<DrAidStates> {
   void login({
     required String email,
     required String password,
+    required BuildContext context,
   }) {
     emit(DrAidLoadingState());
 
@@ -65,6 +68,14 @@ class DrAidCubit extends Cubit<DrAidStates> {
         print("data: ${userModel?.userData}");
         print("token: ${userModel?.token}");
         emit(DrAidLoginSuccessState(userModel!));
+
+        // Navigate to dashboard after successful login
+        navigateTo(
+          context,
+          const Directionality(
+              textDirection: TextDirection.rtl, child: DashboardScreen()),
+        );
+        print("navigate");
       } else {
         print("Response data is null");
         emit(DrAidLoginErrorState("Response data is null"));
@@ -74,7 +85,6 @@ class DrAidCubit extends Cubit<DrAidStates> {
       emit(DrAidLoginErrorState(error.toString()));
     });
   }
-
 
   void createClinic({
     required String name,

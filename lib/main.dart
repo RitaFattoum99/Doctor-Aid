@@ -15,7 +15,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 //TODO: change index for finance screens
-
+//TODO: save token
+//TODO: Naviation 
+//TODO: splash or welcome page
 void main() async {
   Bloc.observer = MyBlocObserver();
   DioHelper.init();
