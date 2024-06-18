@@ -15,8 +15,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 //TODO: change index for finance screens
+//! اندكس واجهات المالية
 //TODO: save token
 //TODO: Naviation
+//TODO: validation
 //TODO: splash or welcome page
 void main() async {
   Bloc.observer = MyBlocObserver();

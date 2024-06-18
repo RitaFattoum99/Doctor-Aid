@@ -277,42 +277,74 @@ class _AddClinicScreenState extends State<AddClinicScreen> {
                 onTap: () {
                   print("create clinic");
 
-                  DrAidCubit.get(context).createClinic(
-                      //TODO: pass token as variable
-                      token:
-                          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZnVsbE5hbWUiOiLYo9it2YXYryDYtNmK2K4g2KfZhNi02KjYp9ioIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzE4NjIxMTUwfQ.MKGlRqm9skM4hoHsHO2oBbnnintKNJj_5wR4Hjotof8",
-                      name: clinicName.text,
-                      address: clinicAddress.text,
-                      telePhoneNumber: telephoneNumber.text,
-                      phoneNumber: phoneNumber.text,
-                      whatsappNumber: whatsAppNumber.text,
-                      ownerName: ownerName.text,
-                      userEmail: userEmail.text,
-                      ownerAddress: ownerAddress.text,
-                      ownerPhone: ownerPhone.text);
-                  print("name: ${clinicName.text}");
-                  print("owner name: ${ownerName.text}");
+                  // DrAidCubit.get(context).createClinic(
+                  //     //TODO: pass token as variable
+                  //     token:
+                  //         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZnVsbE5hbWUiOiLYo9it2YXYryDYtNmK2K4g2KfZhNi02KjYp9ioIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzE4NjIxMTUwfQ.MKGlRqm9skM4hoHsHO2oBbnnintKNJj_5wR4Hjotof8",
+                  //     name: clinicName.text,
+                  //     address: clinicAddress.text,
+                  //     telePhoneNumber: telephoneNumber.text,
+                  //     phoneNumber: phoneNumber.text,
+                  //     whatsappNumber: whatsAppNumber.text,
+                  //     ownerName: ownerName.text,
+                  //     userEmail: userEmail.text,
+                  //     ownerAddress: ownerAddress.text,
+                  //     ownerPhone: ownerPhone.text);
+                  // print("name: ${clinicName.text}");
+                  // print("owner name: ${ownerName.text}");
 
                   // DrAidCubit.get(context).createPatient(
-                  //     address: 'address',
-                  //     age: 'age',
-                  //     email: 'email',
-                  //     phoneNumber: 'phoneNumber',
-                  //     fullName: 'LL',
-                  //     habits: 'habits',
-                  //     gender: 'gender'
+                  //TODO: pass token as variable
+                  //   clinicId: 13,
+                  //   token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZnVsbE5hbWUiOiLYo9it2YXYryDYtNmK2K4g2KfZhNi02KjYp9ioIiwicm9sZXMiOlsiYWRtaW4iXSwiaWF0IjoxNzE4NjA0NjE2fQ.hlL_f3ls3XTsO8S1TJB5a-7y1M8SWQe2IbQ5d0DM-is",
+                  //   fullName: "rita fattoum",
+                  //   phoneNumber: "+963965214783",
+                  //   email: "rita@gmail.com",
+                  //   address: "برزة البلد",
+                  //   age: "25",
+                  //   habits: "_",
+                  //   gender: "F",
+                  //   birthDate: DateTime.now(),
                   // );
 
                   // DrAidCubit.get(context).createMedicine(
-                  //     patientId: 1,
-                  //     medicationList: 'medicationList',
-                  //     allergyList: 'allergyList',
+                  //   //TODO: pass token as variable
+                  //   //TODO: pass patientId
+                  //   token:
+                  //       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZnVsbE5hbWUiOiLYo9it2YXYryDYtNmK2K4g2KfZhNi02KjYp9ioIiwicm9sZXMiOlsiYWRtaW4iXSwiaWF0IjoxNzE4NjA0NjE2fQ.hlL_f3ls3XTsO8S1TJB5a-7y1M8SWQe2IbQ5d0DM-is",
+                  //   patientId: 1,
+                  //   medicationList: 'medicationList',
+                  //   allergyList: 'allergyList',
                   // );
 
-                  DrAidCubit.get(context).createDisease(
+                  // DrAidCubit.get(context).createDisease(
+                  //     //TODO: pass token as variable
+                  //     //TODO: pass patientId
+                  //   token:
+                  //       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZnVsbE5hbWUiOiLYo9it2YXYryDYtNmK2K4g2KfZhNi02KjYp9ioIiwicm9sZXMiOlsiYWRtaW4iXSwiaWF0IjoxNzE4NjA0NjE2fQ.hlL_f3ls3XTsO8S1TJB5a-7y1M8SWQe2IbQ5d0DM-is",
+                  //   patientId: 1,
+                  //   diseaseList: 'diseaseList',
+                  //   notes: 'notes',
+                  // );
+
+                  // DrAidCubit.get(context).createComplaint(
+                  //   //TODO: pass token as variable
+                  //   //TODO: pass patientId
+                  //   token:
+                  //       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZnVsbE5hbWUiOiLYo9it2YXYryDYtNmK2K4g2KfZhNi02KjYp9ioIiwicm9sZXMiOlsiYWRtaW4iXSwiaWF0IjoxNzE4NjA0NjE2fQ.hlL_f3ls3XTsO8S1TJB5a-7y1M8SWQe2IbQ5d0DM-is",
+                  //   patientId: 1,
+                  //   complaintText: 'complaintText',
+                  //   consultation: 'consultation',
+                  // );
+
+                  DrAidCubit.get(context).createAttachment(
+                    //TODO: pass token as variable
+                    //TODO: pass patientId
+                    token:
+                        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZnVsbE5hbWUiOiLYo9it2YXYryDYtNmK2K4g2KfZhNi02KjYp9ioIiwicm9sZXMiOlsiYWRtaW4iXSwiaWF0IjoxNzE4NjA0NjE2fQ.hlL_f3ls3XTsO8S1TJB5a-7y1M8SWQe2IbQ5d0DM-is",
                     patientId: 1,
-                    diseseList: 'diseseList',
-                    notes: 'notes',
+                    title: 'title',
+                    attachments: 'attachments',
                   );
                 },
                 child: Container(

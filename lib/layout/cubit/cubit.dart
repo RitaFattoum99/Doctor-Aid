@@ -1,7 +1,10 @@
-// ignore_for_file: avoid_print
+// ignore_for_file: avoid_print, deprecated_member_use
 
+import 'package:dio/dio.dart';
 import 'package:draid/layout/cubit/states.dart';
 import 'package:draid/models/add_clinic_model.dart';
+import 'package:draid/models/create_attachment_model.dart';
+import 'package:draid/models/create_complaint_model.dart';
 import 'package:draid/models/create_disease_model.dart';
 import 'package:draid/models/create_medication_model.dart';
 import 'package:draid/models/create_patient.dart';
@@ -46,6 +49,8 @@ class DrAidCubit extends Cubit<DrAidStates> {
   CreatePatientModel? createPatientModel;
   CreateMedicationModel? createMedicationModel;
   CreateDiseaseModel? createDiseaseModel;
+  CreateComplaintModel? createComplaintModel;
+  CreateAttachmentModel? createAttachmentModel;
 
   void login({
     required String email,
@@ -130,46 +135,81 @@ class DrAidCubit extends Cubit<DrAidStates> {
     }).catchError((error) {
       print('Create Clinic Error: $error');
       emit(DrAidClinicErrorState(error.toString()));
-      // addClinicModel = AddClinicModel.fromJson(value.data);
-      // print(addClinicModel?.status);
-      // print(addClinicModel?.clinicData);
-      // print(addClinicModel?.message);
-
-      // print("ownerAddress: ${addClinicModel?.clinicData.ownerAddress}");
-      // print("ownerPhone: ${addClinicModel?.clinicData.ownerPhone}");
     });
   }
 
   void createPatient({
+    required int clinicId,
+    required String fullName,
+    required String phoneNumber,
+    required String email,
     required String address,
     required String age,
-    required String email,
-    required String phoneNumber,
-    required String fullName,
     required String habits,
     required String gender,
-    // required DateTime birthDate,
+    required DateTime birthDate,
+    required String token,
   }) {
-    DioHelper.postData(
-            url: patient,
-            data: {
-              'address': address,
-              'age': age,
-              'email': email,
-              'phoneNumber': phoneNumber,
-              'fullName': fullName,
-              'habits': habits,
-              'gender': gender,
-              // 'birthDate':birthDate,
-            },
-            token:
-                'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc0FkbWluIjp0cnVlLCJpZCI6MTUsImlhdCI6MTcwNTA5MTM1Mn0.1qs_WXlcjeFc3-Re7WWjsgkHmNEyYzI0TjsS7-q8pnw')
-        .then((value) {
-      // print(token);
-      print(createPatientModel?.status);
-      createPatientModel = CreatePatientModel.fromJson(value.data);
+    String formattedBirthDate = birthDate.toIso8601String();
 
-      print(createPatientModel?.data.fullName);
+    // Log the request data
+    print("Sending request to create patient with data:");
+    print({
+      "clinicId": clinicId,
+      "fullName": fullName,
+      "phoneNumber": phoneNumber,
+      "email": email,
+      "address": address,
+      "age": age,
+      "habits": habits,
+      "gender": gender,
+      "birthDate": formattedBirthDate,
+      "token": token,
+    });
+
+    DioHelper.postData(
+      url: patient,
+      data: {
+        "clinicId": clinicId,
+        "fullName": fullName,
+        "phoneNumber": phoneNumber,
+        "email": email,
+        "address": address,
+        "age": age,
+        "habits": habits,
+        "gender": gender,
+        "birthDate": formattedBirthDate,
+      },
+      token: token,
+    ).then((value) {
+      print("Response status: ${value.statusCode}");
+      print("Response data: ${value.data}");
+
+      if (value.data != null) {
+        createPatientModel = CreatePatientModel.fromJson(value.data);
+        print("status: ${createPatientModel?.status}");
+        print(createPatientModel?.patientData);
+        print(createPatientModel?.message);
+        print("ownerAddress: ${createPatientModel?.patientData.address}");
+        print("ownerPhone: ${createPatientModel?.patientData.phoneNumber}");
+        emit(DrAidPatientSuccessState(createPatientModel!));
+      } else {
+        print("status: ${createPatientModel?.status}");
+        print("Response data is null");
+        emit(DrAidPatientErrorState("Response data is null"));
+      }
+    }).catchError((error) {
+      print("Request failed with error: $error");
+      if (error is DioError) {
+        print("Error type: ${error.type}");
+        print("Error response: ${error.response}");
+        print("Error message: ${error.message}");
+        print("Error request options: ${error.requestOptions}");
+        if (error.response != null) {
+          print("Error response data: ${error.response?.data}");
+        }
+      }
+      emit(DrAidPatientErrorState(error.toString()));
     });
   }
 
@@ -177,45 +217,219 @@ class DrAidCubit extends Cubit<DrAidStates> {
     required int patientId,
     required String medicationList,
     required String allergyList,
+    required String token,
   }) {
+    // Log the request data
+    print("Sending request to create medicine with data:");
+    print({
+      'PatientId': patientId,
+      'medicationList': medicationList,
+      'allergyList': allergyList,
+      "token": token,
+    });
     DioHelper.postData(
-            url: medication,
+            url: '$patient/$patientId/$medication',
             data: {
-              'PatientId': patientId,
               'medicationList': medicationList,
               'allergyList': allergyList,
             },
-            token:
-                'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc0FkbWluIjp0cnVlLCJpZCI6MTUsImlhdCI6MTcwNTA5MTM1Mn0.1qs_WXlcjeFc3-Re7WWjsgkHmNEyYzI0TjsS7-q8pnw')
+            token: token)
         .then((value) {
-      // print(token);
-      print(createMedicationModel?.status);
-      createMedicationModel = CreateMedicationModel.fromJson(value.data);
+      print("Response status: ${value.statusCode}");
+      print("Response data: ${value.data}");
 
-      print(createMedicationModel?.data.medicationList);
+      if (value.data != null) {
+        createMedicationModel = CreateMedicationModel.fromJson(value.data);
+        print("status: ${createMedicationModel?.status}");
+        print(createMedicationModel?.medicationData);
+        print(createMedicationModel?.message);
+        print(
+            "allergyList: ${createMedicationModel?.medicationData.allergyList}");
+        print(
+            "medicationList: ${createMedicationModel?.medicationData.medicationList}");
+        emit(DrAidMedicationSuccessState(createMedicationModel!));
+      } else {
+        print("status: ${createMedicationModel?.status}");
+        print("Response data is null");
+        emit(DrAidMedicationErrorState("Response data is null"));
+      }
+    }).catchError((error) {
+      print("Request failed with error: $error");
+      if (error is DioError) {
+        print("Error type: ${error.type}");
+        print("Error response: ${error.response}");
+        print("Error message: ${error.message}");
+        print("Error request options: ${error.requestOptions}");
+        if (error.response != null) {
+          print("Error response data: ${error.response?.data}");
+        }
+      }
+      emit(DrAidMedicationErrorState(error.toString()));
     });
   }
 
   void createDisease({
     required int patientId,
-    required String diseseList,
+    required String diseaseList,
     required String notes,
+    required String token,
   }) {
+    // Log the request data
+    print("Sending request to create medicine with data:");
+    print({
+      'PatientId': patientId,
+      'diseaseList': diseaseList,
+      'notes': notes,
+      "token": token,
+    });
     DioHelper.postData(
-            url: disease,
+            // url: 'patient/$patientId/disease',
+            url: '$patient/$patientId/$disease',
             data: {
-              'PatientId': patientId,
-              'diseseList': diseseList,
+              'diseaseList': diseaseList,
               'notes': notes,
             },
-            token:
-                'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc0FkbWluIjp0cnVlLCJpZCI6MTUsImlhdCI6MTcwNTA5MTM1Mn0.1qs_WXlcjeFc3-Re7WWjsgkHmNEyYzI0TjsS7-q8pnw')
+            token: token)
         .then((value) {
-      // print(token);
-      print(createDiseaseModel?.status);
-      createDiseaseModel = CreateDiseaseModel.fromJson(value.data);
+      print("Response status: ${value.statusCode}");
+      print("Response data: ${value.data}");
 
-      print(createDiseaseModel?.data.notes);
+      if (value.data != null) {
+        createDiseaseModel = CreateDiseaseModel.fromJson(value.data);
+
+        print("status: ${createDiseaseModel?.status}");
+        print(createDiseaseModel?.diseaseData);
+        print(createDiseaseModel?.message);
+        print("diseaseList: ${createDiseaseModel?.diseaseData.diseaseList}");
+        print("notes: ${createDiseaseModel?.diseaseData.notes}");
+        emit(DrAidDiseaseSuccessState(createDiseaseModel!));
+      } else {
+        print("status: ${createDiseaseModel?.status}");
+        print("Response data is null");
+        emit(DrAidDiseaseErrorState("Response data is null"));
+      }
+    }).catchError((error) {
+      print("Request failed with error: $error");
+      if (error is DioError) {
+        print("Error type: ${error.type}");
+        print("Error response: ${error.response}");
+        print("Error message: ${error.message}");
+        print("Error request options: ${error.requestOptions}");
+        if (error.response != null) {
+          print("Error response data: ${error.response?.data}");
+        }
+      }
+      emit(DrAidDiseaseErrorState(error.toString()));
+    });
+  }
+
+  void createComplaint({
+    required int patientId,
+    required String complaintText,
+    required String consultation,
+    required String token,
+  }) {
+    // Log the request data
+    print("Sending request to create complaint with data:");
+    print({
+      'PatientId': patientId,
+      'complaintText': complaintText,
+      'consultation': consultation,
+      "token": token,
+    });
+    DioHelper.postData(
+            url: '$patient/$patientId/$complaint',
+            data: {
+              'complaintText': complaintText,
+              'consultation': consultation,
+            },
+            token: token)
+        .then((value) {
+      print("Response status: ${value.statusCode}");
+      print("Response data: ${value.data}");
+
+      if (value.data != null) {
+        createComplaintModel = CreateComplaintModel.fromJson(value.data);
+
+        print("status: ${createComplaintModel?.status}");
+        print(createComplaintModel?.complaintData);
+        print(createComplaintModel?.message);
+        print(
+            "complaintText: ${createComplaintModel?.complaintData.complaintText}");
+        print(
+            "consultation: ${createComplaintModel?.complaintData.consultation}");
+        emit(DrAidComplaintSuccessState(createComplaintModel!));
+      } else {
+        print("status: ${createComplaintModel?.status}");
+        print("Response data is null");
+        emit(DrAidComplaintErrorState("Response data is null"));
+      }
+    }).catchError((error) {
+      print("Request failed with error: $error");
+      if (error is DioError) {
+        print("Error type: ${error.type}");
+        print("Error response: ${error.response}");
+        print("Error message: ${error.message}");
+        print("Error request options: ${error.requestOptions}");
+        if (error.response != null) {
+          print("Error response data: ${error.response?.data}");
+        }
+      }
+      emit(DrAidComplaintErrorState(error.toString()));
+    });
+  }
+
+  void createAttachment({
+    required int patientId,
+    required String title,
+    required String attachments,
+    required String token,
+  }) {
+    // Log the request data
+    print("Sending request to create attachments with data:");
+    print({
+      'PatientId': patientId,
+      'title': title,
+      'attachments': attachments,
+      "token": token,
+    });
+    DioHelper.postData(
+            url: '$patient/$patientId/$attachments',
+            data: {
+              'title': title,
+              'attachments': attachments,
+            },
+            token: token)
+        .then((value) {
+      print("Response status: ${value.statusCode}");
+      print("Response data: ${value.data}");
+
+      if (value.data != null) {
+        createAttachmentModel = CreateAttachmentModel.fromJson(value.data);
+
+        print("status: ${createAttachmentModel?.status}");
+        print(createAttachmentModel?.attachmentData);
+        print(createAttachmentModel?.message);
+        print("title: ${createAttachmentModel?.attachmentData[1].title}");
+        print("url: ${createAttachmentModel?.attachmentData[1].url}");
+        emit(DrAidAttachmentSuccessState(createAttachmentModel!));
+      } else {
+        print("status: ${createAttachmentModel?.status}");
+        print("Response data is null");
+        emit(DrAidAttachmentErrorState("Response data is null"));
+      }
+    }).catchError((error) {
+      print("Request failed with error: $error");
+      if (error is DioError) {
+        print("Error type: ${error.type}");
+        print("Error response: ${error.response}");
+        print("Error message: ${error.message}");
+        print("Error request options: ${error.requestOptions}");
+        if (error.response != null) {
+          print("Error response data: ${error.response?.data}");
+        }
+      }
+      emit(DrAidAttachmentErrorState(error.toString()));
     });
   }
 
