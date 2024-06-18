@@ -115,32 +115,28 @@ class DrAidCubit extends Cubit<DrAidStates> {
             // 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZnVsbE5hbWUiOiLYo9it2YXYryDYtNmK2K4g2KfZhNi02KjYp9ioIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzE4NTczMjg0fQ.A1mSnG2O5jz8hy8OReQorjrCybqFNPdOx0mhSYNUbzM'
             )
         .then((value) {
-      // print(token);
-      print(addClinicModel?.status);
-      print(addClinicModel?.clinicData);
-      print(addClinicModel?.message);
-      addClinicModel = AddClinicModel.fromJson(value.data);
+      if (value.data != null) {
+        addClinicModel = AddClinicModel.fromJson(value.data);
+        print(addClinicModel?.status);
+        print(addClinicModel?.clinicData);
+        print(addClinicModel?.message);
+        print("ownerAddress: ${addClinicModel?.clinicData.ownerAddress}");
+        print("ownerPhone: ${addClinicModel?.clinicData.ownerPhone}");
+        emit(DrAidClinicSuccessState(addClinicModel!));
+      } else {
+        print("Response data is null");
+        emit(DrAidClinicErrorState("Response data is null"));
+      }
+    }).catchError((error) {
+      print('Create Clinic Error: $error');
+      emit(DrAidClinicErrorState(error.toString()));
+      // addClinicModel = AddClinicModel.fromJson(value.data);
+      // print(addClinicModel?.status);
+      // print(addClinicModel?.clinicData);
+      // print(addClinicModel?.message);
 
-      print(addClinicModel?.clinicData.ownerName);
-
-      // addClinicModel.clinicData.
-
-      //print(value.data);
-      //createGroupModel= CreateGroupModel.fromJson(value.data);
-      // if(loginModel==null){ emit(LoginDatanullErrorState(loginModel));}
-      //else {emit(LoginSuccessState(loginModel));}
-
-      //  emit(LoginSuccessState(loginModel));
-      //emit(CreateGroupSuccessState(createGroupModel));
-      // print(createGroupModel.status);
-      // print(createGroupModel.result.id);
-      // print(createGroupModel.result.name);
-
-      //  emit(LoginLoadingState());
-
-      // print(loginModel.status);
-
-      // print(loginModel.data.name);
+      // print("ownerAddress: ${addClinicModel?.clinicData.ownerAddress}");
+      // print("ownerPhone: ${addClinicModel?.clinicData.ownerPhone}");
     });
   }
 

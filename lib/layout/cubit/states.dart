@@ -1,3 +1,4 @@
+import 'package:draid/models/add_clinic_model.dart';
 import 'package:draid/models/user_model.dart';
 
 abstract class DrAidStates {}
@@ -26,4 +27,16 @@ class DrAidLoginErrorState extends DrAidStates {
   final String error;
 
   DrAidLoginErrorState(this.error);
+}
+
+class DrAidClinicSuccessState extends DrAidStates {
+  final AddClinicModel addClinicModel;
+
+  DrAidClinicSuccessState(this.addClinicModel);
+}
+
+class DrAidClinicErrorState extends DrAidStates {
+  final String errorMsg;
+
+  DrAidClinicErrorState(this.errorMsg);
 }

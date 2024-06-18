@@ -51,62 +51,6 @@ class _AddClinicScreenState extends State<AddClinicScreen> {
                     width: 335,
                   ),
                   Text(
-                    'اسم الطبيب المالك',
-                    style: TextStyle(fontSize: 24, color: fontColor),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              Row(
-                children: [
-                  Container(
-                    height: 50,
-                    width: 400,
-                    margin: const EdgeInsets.only(left: 20),
-                    child: ClinicFormField(
-                        type: TextInputType.emailAddress,
-                        controller: clinicName,
-                        validate: (value) {
-                          if (value!.isEmpty) {
-                            return 'Please Enter your email address';
-                          }
-                          return null;
-                        },
-                        label: 'الرجاء تعبئة الحقل'),
-                  ),
-                  const Spacer(),
-                  Container(
-                    height: 50,
-                    width: 400,
-                    margin: const EdgeInsets.only(left: 20),
-                    child: ClinicFormField(
-                        type: TextInputType.emailAddress,
-                        controller: ownerName,
-                        validate: (value) {
-                          if (value!.isEmpty) {
-                            return 'Please Enter your email address';
-                          }
-                          return null;
-                        },
-                        label: 'الرجاء تعبئة الحقل'),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              const Row(
-                children: [
-                  Text(
-                    'عنوان المالك',
-                    style: TextStyle(fontSize: 24, color: fontColor),
-                  ),
-                  SizedBox(
-                    width: 335,
-                  ),
-                  Text(
                     'عنوان العيادة',
                     style: TextStyle(fontSize: 24, color: fontColor),
                   ),
@@ -122,11 +66,11 @@ class _AddClinicScreenState extends State<AddClinicScreen> {
                     width: 400,
                     margin: const EdgeInsets.only(left: 20),
                     child: ClinicFormField(
-                        type: TextInputType.emailAddress,
-                        controller: ownerAddress,
+                        type: TextInputType.text,
+                        controller: clinicName,
                         validate: (value) {
                           if (value!.isEmpty) {
-                            return 'Please Enter your email address';
+                            return 'رجاءً ادخل اسم عيادتك';
                           }
                           return null;
                         },
@@ -138,11 +82,11 @@ class _AddClinicScreenState extends State<AddClinicScreen> {
                     width: 400,
                     margin: const EdgeInsets.only(left: 20),
                     child: ClinicFormField(
-                        type: TextInputType.emailAddress,
+                        type: TextInputType.text,
                         controller: clinicAddress,
                         validate: (value) {
                           if (value!.isEmpty) {
-                            return 'Please Enter your email address';
+                            return 'رجاءً ادخل عنوان عيادتك';
                           }
                           return null;
                         },
@@ -156,14 +100,70 @@ class _AddClinicScreenState extends State<AddClinicScreen> {
               const Row(
                 children: [
                   Text(
-                    'كلمة المرور',
+                    'اسم الطبيب المالك',
                     style: TextStyle(fontSize: 24, color: fontColor),
                   ),
                   SizedBox(
-                    width: 335,
+                    width: 260,
                   ),
                   Text(
-                    'تأكيد كلمة المرور',
+                    'عنوان الطبيب المالك',
+                    style: TextStyle(fontSize: 24, color: fontColor),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              Row(
+                children: [
+                  Container(
+                    height: 50,
+                    width: 400,
+                    margin: const EdgeInsets.only(left: 20),
+                    child: ClinicFormField(
+                        type: TextInputType.text,
+                        controller: ownerName,
+                        validate: (value) {
+                          if (value!.isEmpty) {
+                            return 'رجاءً ادخل اسم الطبيب المالك';
+                          }
+                          return null;
+                        },
+                        label: 'الرجاء تعبئة الحقل'),
+                  ),
+                  const Spacer(),
+                  Container(
+                    height: 50,
+                    width: 400,
+                    margin: const EdgeInsets.only(left: 20),
+                    child: ClinicFormField(
+                        type: TextInputType.text,
+                        controller: ownerAddress,
+                        validate: (value) {
+                          if (value!.isEmpty) {
+                            return 'رجاءً ادخل عنوان الطبيب المالك';
+                          }
+                          return null;
+                        },
+                        label: 'الرجاء تعبئة الحقل'),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              const Row(
+                children: [
+                  Text(
+                    'البريد الإلكتروني للطبيب',
+                    style: TextStyle(fontSize: 24, color: fontColor),
+                  ),
+                  SizedBox(
+                    width: 215,
+                  ),
+                  Text(
+                    'رقم الطبيب المالك',
                     style: TextStyle(fontSize: 24, color: fontColor),
                   ),
                 ],
@@ -179,10 +179,10 @@ class _AddClinicScreenState extends State<AddClinicScreen> {
                     margin: const EdgeInsets.only(left: 20),
                     child: ClinicFormField(
                         type: TextInputType.emailAddress,
-                        controller: clinicName,
+                        controller: userEmail,
                         validate: (value) {
                           if (value!.isEmpty) {
-                            return 'Please Enter your email address';
+                            return 'رجاءً ادخل بريداَ إلكترونياَ للطبيب المالك';
                           }
                           return null;
                         },
@@ -194,11 +194,11 @@ class _AddClinicScreenState extends State<AddClinicScreen> {
                     width: 400,
                     margin: const EdgeInsets.only(left: 20),
                     child: ClinicFormField(
-                        type: TextInputType.emailAddress,
-                        controller: clinicName,
+                        type: TextInputType.number,
+                        controller: ownerPhone,
                         validate: (value) {
                           if (value!.isEmpty) {
-                            return 'Please Enter your email address';
+                            return 'رجاءً ادخل رقم الطبيب المالك';
                           }
                           return null;
                         },
@@ -212,7 +212,7 @@ class _AddClinicScreenState extends State<AddClinicScreen> {
               const Row(
                 children: [
                   Text(
-                    'معلومات التواصل',
+                    ' معلومات التواصل بالعيادة',
                     style: TextStyle(fontSize: 24, color: fontColor),
                   ),
                 ],
@@ -228,11 +228,11 @@ class _AddClinicScreenState extends State<AddClinicScreen> {
                     width: 250,
                     margin: const EdgeInsets.only(left: 20),
                     child: ClinicFormField(
-                        type: TextInputType.emailAddress,
+                        type: TextInputType.number,
                         controller: whatsAppNumber,
                         validate: (value) {
                           if (value!.isEmpty) {
-                            return 'Please Enter your email address';
+                            return 'رجاءً ادخل رقم Whatsapp لعيادتك';
                           }
                           return null;
                         },
@@ -247,7 +247,7 @@ class _AddClinicScreenState extends State<AddClinicScreen> {
                         controller: phoneNumber,
                         validate: (value) {
                           if (value!.isEmpty) {
-                            return 'Please Enter your email address';
+                            return 'رجاءً ادخل رقم جوال لعيادتك';
                           }
                           return null;
                         },
@@ -258,11 +258,11 @@ class _AddClinicScreenState extends State<AddClinicScreen> {
                     width: 250,
                     margin: const EdgeInsets.only(left: 20),
                     child: ClinicFormField(
-                        type: TextInputType.emailAddress,
+                        type: TextInputType.number,
                         controller: telephoneNumber,
                         validate: (value) {
                           if (value!.isEmpty) {
-                            return 'Please Enter your email address';
+                            return 'رجاءً ادخل رقم ثابت لعيادتك';
                           }
                           return null;
                         },
@@ -275,19 +275,24 @@ class _AddClinicScreenState extends State<AddClinicScreen> {
               ),
               InkWell(
                 onTap: () {
-                  print(5);
-                  //  DrAidCubit.get(context).createClinic(
-                  //             token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZnVsbE5hbWUiOiLYo9it2YXYryDYtNmK2K4g2KfZhNi02KjYp9ioIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzE4NjIxMTUwfQ.MKGlRqm9skM4hoHsHO2oBbnnintKNJj_5wR4Hjotof8",
-                  //             name: "عيادة حرستاالحديثة",
-                  //             address: "دمشق-حرستا",
-                  //             telePhoneNumber: "0116635648",
-                  //             phoneNumber: "+963957447524",
-                  //             whatsappNumber: "+963957447524",
-                  //             ownerName: "أحمد شيخ الشباب",
-                  //             userEmail: "hmedo@gmail.com",
-                  //             ownerAddress: "مزة شيخ سعد خلف جامع المزة الكبير",
-                  //             ownerPhone: "0962255185"
-                  // );
+                  print("create clinic");
+
+                  DrAidCubit.get(context).createClinic(
+                      //TODO: pass token as variable
+                      token:
+                          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZnVsbE5hbWUiOiLYo9it2YXYryDYtNmK2K4g2KfZhNi02KjYp9ioIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzE4NjIxMTUwfQ.MKGlRqm9skM4hoHsHO2oBbnnintKNJj_5wR4Hjotof8",
+                      name: clinicName.text,
+                      address: clinicAddress.text,
+                      telePhoneNumber: telephoneNumber.text,
+                      phoneNumber: phoneNumber.text,
+                      whatsappNumber: whatsAppNumber.text,
+                      ownerName: ownerName.text,
+                      userEmail: userEmail.text,
+                      ownerAddress: ownerAddress.text,
+                      ownerPhone: ownerPhone.text);
+                  print("name: ${clinicName.text}");
+                  print("owner name: ${ownerName.text}");
+
                   // DrAidCubit.get(context).createPatient(
                   //     address: 'address',
                   //     age: 'age',
@@ -340,14 +345,14 @@ class _AddClinicScreenState extends State<AddClinicScreen> {
           height: 700,
           color: coolWhite2,
           child: Padding(
-            padding: const EdgeInsets.all(30.0),
+            padding: const EdgeInsets.only(bottom: 30.0),
             child: Column(
               children: [
                 const Row(
                   children: [
                     Text(
                       'إضافة عيادة جديدة',
-                      style: TextStyle(fontSize: 28, color: Colors.black),
+                      style: TextStyle(fontSize: 28, color: blueText),
                     ),
                   ],
                 ),
