@@ -1,12 +1,29 @@
 import 'package:draid/models/add_clinic_model.dart';
+import 'package:draid/models/all_patients.dart';
+import 'package:draid/models/completed_treatment.dart';
 import 'package:draid/models/create_attachment_model.dart';
 import 'package:draid/models/create_complaint_model.dart';
 import 'package:draid/models/create_disease_model.dart';
 import 'package:draid/models/create_medication_model.dart';
 import 'package:draid/models/create_patient.dart';
+import 'package:draid/models/treatment.dart';
+import 'package:draid/models/treatment_plan.dart';
 import 'package:draid/models/user_model.dart';
 
 abstract class DrAidStates {}
+
+class DrAidAllPatientSuccessState extends DrAidStates {
+  final AllPatientsModel allPatientsModel;
+
+  DrAidAllPatientSuccessState(this.allPatientsModel);
+}
+
+class DrAidErrorState extends DrAidStates {
+  final String message;
+
+  DrAidErrorState(this.message);
+}
+
 
 class DrAidInitialState extends DrAidStates {}
 
@@ -54,10 +71,13 @@ class DrAidPatientSuccessState extends DrAidStates {
 
 class DrAidPatientErrorState extends DrAidStates {
   final String errorMsg;
-
   DrAidPatientErrorState(this.errorMsg);
 }
 
+class DrAidAllPatientErrorState extends DrAidStates {
+  final String errorMsg;
+  DrAidAllPatientErrorState(this.errorMsg);
+}
 
 class DrAidMedicationSuccessState extends DrAidStates {
   final CreateMedicationModel createMedicationModel;
@@ -83,7 +103,6 @@ class DrAidDiseaseErrorState extends DrAidStates {
   DrAidDiseaseErrorState(this.errorMsg);
 }
 
-
 class DrAidComplaintSuccessState extends DrAidStates {
   final CreateComplaintModel createComplaintModel;
 
@@ -96,7 +115,6 @@ class DrAidComplaintErrorState extends DrAidStates {
   DrAidComplaintErrorState(this.errorMsg);
 }
 
-
 class DrAidAttachmentSuccessState extends DrAidStates {
   final CreateAttachmentModel createAttachmentModel;
 
@@ -107,4 +125,40 @@ class DrAidAttachmentErrorState extends DrAidStates {
   final String errorMsg;
 
   DrAidAttachmentErrorState(this.errorMsg);
+}
+
+class DrAidTreatmentSuccessState extends DrAidStates {
+  final TreatmentModel treatmentModel;
+
+  DrAidTreatmentSuccessState(this.treatmentModel);
+}
+
+class DrAidTreatmentErrorState extends DrAidStates {
+  final String errorMsg;
+
+  DrAidTreatmentErrorState(this.errorMsg);
+}
+
+class DrAidTreatmentPlanSuccessState extends DrAidStates {
+  final TreatmentPlanModel treatmentPlanModel;
+
+  DrAidTreatmentPlanSuccessState(this.treatmentPlanModel);
+}
+
+class DrAidTreatmentPlanErrorState extends DrAidStates {
+  final String errorMsg;
+
+  DrAidTreatmentPlanErrorState(this.errorMsg);
+}
+
+class DrAidCompletedTreatmentSuccessState extends DrAidStates {
+  final CompletedTreatmentModel completedTreatmentModel;
+
+  DrAidCompletedTreatmentSuccessState(this.completedTreatmentModel);
+}
+
+class DrAidCompletedTreatmentErrorState extends DrAidStates {
+  final String errorMsg;
+
+  DrAidCompletedTreatmentErrorState(this.errorMsg);
 }

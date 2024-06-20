@@ -277,26 +277,27 @@ class _AddClinicScreenState extends State<AddClinicScreen> {
                 onTap: () {
                   print("create clinic");
 
-                  // DrAidCubit.get(context).createClinic(
-                  //     //TODO: pass token as variable
-                  //     token:
-                  //         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZnVsbE5hbWUiOiLYo9it2YXYryDYtNmK2K4g2KfZhNi02KjYp9ioIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzE4NjIxMTUwfQ.MKGlRqm9skM4hoHsHO2oBbnnintKNJj_5wR4Hjotof8",
-                  //     name: clinicName.text,
-                  //     address: clinicAddress.text,
-                  //     telePhoneNumber: telephoneNumber.text,
-                  //     phoneNumber: phoneNumber.text,
-                  //     whatsappNumber: whatsAppNumber.text,
-                  //     ownerName: ownerName.text,
-                  //     userEmail: userEmail.text,
-                  //     ownerAddress: ownerAddress.text,
-                  //     ownerPhone: ownerPhone.text);
-                  // print("name: ${clinicName.text}");
-                  // print("owner name: ${ownerName.text}");
+                  DrAidCubit.get(context).createClinic(
+                      //TODO: pass token as variable
+                      token:
+                          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZnVsbE5hbWUiOiJhYWFhYdij2K3ZhdivINi02YrYriDYp9mE2LTYqNin2KgiLCJyb2xlcyI6WyJhZG1pbiJdLCJpYXQiOjE3MTg4MTgzNDJ9.Xm9JqTT-dr0UW9K1VyRHtFe1k2V0mZCXgjO0krZQiqQ",
+                      name: clinicName.text,
+                      address: clinicAddress.text,
+                      telePhoneNumber: telephoneNumber.text,
+                      phoneNumber: phoneNumber.text,
+                      whatsappNumber: whatsAppNumber.text,
+                      ownerName: ownerName.text,
+                      userEmail: userEmail.text,
+                      ownerAddress: ownerAddress.text,
+                      ownerPhone: ownerPhone.text);
+                  print("name: ${clinicName.text}");
+                  print("owner name: ${ownerName.text}");
 
                   // DrAidCubit.get(context).createPatient(
-                  //TODO: pass token as variable
+                  //   // TODO: pass token as variable
                   //   clinicId: 13,
-                  //   token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZnVsbE5hbWUiOiLYo9it2YXYryDYtNmK2K4g2KfZhNi02KjYp9ioIiwicm9sZXMiOlsiYWRtaW4iXSwiaWF0IjoxNzE4NjA0NjE2fQ.hlL_f3ls3XTsO8S1TJB5a-7y1M8SWQe2IbQ5d0DM-is",
+                  //   token:
+                  // "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZnVsbE5hbWUiOiJhYWFhYdij2K3ZhdivINi02YrYriDYp9mE2LTYqNin2KgiLCJyb2xlcyI6WyJhZG1pbiJdLCJpYXQiOjE3MTg4MTgzNDJ9.Xm9JqTT-dr0UW9K1VyRHtFe1k2V0mZCXgjO0krZQiqQ",
                   //   fullName: "rita fattoum",
                   //   phoneNumber: "+963965214783",
                   //   email: "rita@gmail.com",
@@ -311,7 +312,7 @@ class _AddClinicScreenState extends State<AddClinicScreen> {
                   //   //TODO: pass token as variable
                   //   //TODO: pass patientId
                   //   token:
-                  //       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZnVsbE5hbWUiOiLYo9it2YXYryDYtNmK2K4g2KfZhNi02KjYp9ioIiwicm9sZXMiOlsiYWRtaW4iXSwiaWF0IjoxNzE4NjA0NjE2fQ.hlL_f3ls3XTsO8S1TJB5a-7y1M8SWQe2IbQ5d0DM-is",
+                  // "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZnVsbE5hbWUiOiJhYWFhYdij2K3ZhdivINi02YrYriDYp9mE2LTYqNin2KgiLCJyb2xlcyI6WyJhZG1pbiJdLCJpYXQiOjE3MTg4MTgzNDJ9.Xm9JqTT-dr0UW9K1VyRHtFe1k2V0mZCXgjO0krZQiqQ",
                   //   patientId: 1,
                   //   medicationList: 'medicationList',
                   //   allergyList: 'allergyList',
@@ -321,7 +322,7 @@ class _AddClinicScreenState extends State<AddClinicScreen> {
                   //     //TODO: pass token as variable
                   //     //TODO: pass patientId
                   //   token:
-                  //       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZnVsbE5hbWUiOiLYo9it2YXYryDYtNmK2K4g2KfZhNi02KjYp9ioIiwicm9sZXMiOlsiYWRtaW4iXSwiaWF0IjoxNzE4NjA0NjE2fQ.hlL_f3ls3XTsO8S1TJB5a-7y1M8SWQe2IbQ5d0DM-is",
+                  // "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZnVsbE5hbWUiOiJhYWFhYdij2K3ZhdivINi02YrYriDYp9mE2LTYqNin2KgiLCJyb2xlcyI6WyJhZG1pbiJdLCJpYXQiOjE3MTg4MTgzNDJ9.Xm9JqTT-dr0UW9K1VyRHtFe1k2V0mZCXgjO0krZQiqQ",
                   //   patientId: 1,
                   //   diseaseList: 'diseaseList',
                   //   notes: 'notes',
@@ -331,21 +332,47 @@ class _AddClinicScreenState extends State<AddClinicScreen> {
                   //   //TODO: pass token as variable
                   //   //TODO: pass patientId
                   //   token:
-                  //       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZnVsbE5hbWUiOiLYo9it2YXYryDYtNmK2K4g2KfZhNi02KjYp9ioIiwicm9sZXMiOlsiYWRtaW4iXSwiaWF0IjoxNzE4NjA0NjE2fQ.hlL_f3ls3XTsO8S1TJB5a-7y1M8SWQe2IbQ5d0DM-is",
+                  //        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZnVsbE5hbWUiOiJhYWFhYdij2K3ZhdivINi02YrYriDYp9mE2LTYqNin2KgiLCJyb2xlcyI6WyJhZG1pbiJdLCJpYXQiOjE3MTg4MTgzNDJ9.Xm9JqTT-dr0UW9K1VyRHtFe1k2V0mZCXgjO0krZQiqQ",
                   //   patientId: 1,
                   //   complaintText: 'complaintText',
                   //   consultation: 'consultation',
                   // );
 
-                  DrAidCubit.get(context).createAttachment(
-                    //TODO: pass token as variable
-                    //TODO: pass patientId
-                    token:
-                        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZnVsbE5hbWUiOiLYo9it2YXYryDYtNmK2K4g2KfZhNi02KjYp9ioIiwicm9sZXMiOlsiYWRtaW4iXSwiaWF0IjoxNzE4NjA0NjE2fQ.hlL_f3ls3XTsO8S1TJB5a-7y1M8SWQe2IbQ5d0DM-is",
-                    patientId: 1,
-                    title: 'title',
-                    attachments: 'attachments',
-                  );
+                  // DrAidCubit.get(context).createTreatment(
+                  //     //TODO: pass token as variable
+                  //     //TODO: pass clinicId
+                  //     token:
+                  //         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZnVsbE5hbWUiOiJhYWFhYdij2K3ZhdivINi02YrYriDYp9mE2LTYqNin2KgiLCJyb2xlcyI6WyJhZG1pbiJdLCJpYXQiOjE3MTg4MTgzNDJ9.Xm9JqTT-dr0UW9K1VyRHtFe1k2V0mZCXgjO0krZQiqQ",
+                  //     clinicId: 18,
+                  //     title: 'title',
+                  //     category: 'category',
+                  //     description: 'description',
+                  //     defaultCost: 20000,
+                  //     color: "green");
+
+                  // DrAidCubit.get(context).createTreatmentPlan(
+                  //     //TODO: pass token as variable
+                  //     //TODO: pass patientId
+                  //     token:
+                  //         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZnVsbE5hbWUiOiJhYWFhYdij2K3ZhdivINi02YrYriDYp9mE2LTYqNin2KgiLCJyb2xlcyI6WyJhZG1pbiJdLCJpYXQiOjE3MTg4MTgzNDJ9.Xm9JqTT-dr0UW9K1VyRHtFe1k2V0mZCXgjO0krZQiqQ",
+                  //     patientId: 1,
+                  //     discount: 0.02,
+                  //     sessionNumber: 2,
+                  //     totalCost: 100000,);
+
+
+                        DrAidCubit.get(context).createCompletedTreatment(
+                      //TODO: pass token as variable
+                      //TODO: pass patientId
+                      token:
+                          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZnVsbE5hbWUiOiJhYWFhYdij2K3ZhdivINi02YrYriDYp9mE2LTYqNin2KgiLCJyb2xlcyI6WyJhZG1pbiJdLCJpYXQiOjE3MTg4MTgzNDJ9.Xm9JqTT-dr0UW9K1VyRHtFe1k2V0mZCXgjO0krZQiqQ",
+                      patientId: 1,
+                    treatmentId: 1,
+                    fromTeeth: 5,
+                    toTeeth: 6,
+                    place: "tooth",
+                    notes: "لا يوجد أية اختلاطات ",
+                    );
                 },
                 child: Container(
                   height: 50,

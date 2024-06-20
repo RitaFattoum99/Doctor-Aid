@@ -42,15 +42,20 @@ class DioHelper {
     //
     //     }
     // );
-    return await dio.get(
-      url,
-      queryParameters: query,
-    );
+    try {
+      final response = await dio.get(
+        url,
+        queryParameters: query,
+      );
+      return response;
+    } catch (e) {
+      rethrow;
+    }
   }
 
   static Future<Response> postData({
     required String url,
-    required Map<String, dynamic> data,
+    required dynamic data,
     String lang = 'ar',
     String? token,
     // Map<String,dynamic>  query,
@@ -72,6 +77,22 @@ class DioHelper {
       url,
       //queryParameters: query,
       data: data,
+    );
+  }
+
+  static Future<Response> postFormData({
+    required String url,
+    required FormData formData,
+    String lang = 'ar',
+    String? token,
+  }) async {
+    dio.options.headers = {
+      'lang': lang,
+      'Authorization': 'Bearer $token',
+    };
+    return dio.post(
+      url,
+      data: formData,
     );
   }
 

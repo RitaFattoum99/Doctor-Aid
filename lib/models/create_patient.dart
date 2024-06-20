@@ -1,10 +1,6 @@
-import 'dart:convert';
-
-CreatePatientModel createPatientModelFromJson(String str) =>
-    CreatePatientModel.fromJson(json.decode(str));
-
-String createPatientModelToJson(CreatePatientModel data) =>
-    json.encode(data.toJson());
+import 'package:draid/models/create_attachment_model.dart';
+import 'package:draid/models/create_complaint_model.dart';
+import 'package:draid/models/create_disease_model.dart';
 
 class CreatePatientModel {
   String status;
@@ -23,66 +19,72 @@ class CreatePatientModel {
         message: json["message"],
         patientData: PatientData.fromJson(json["data"]),
       );
-
-  Map<String, dynamic> toJson() => {
-        "status": status,
-        "message": message,
-        "data": patientData.toJson(),
-      };
 }
 
 class PatientData {
-  int id;
-  String address;
-  String age;
-  String email;
-  String fullName;
-  String habits;
-  String phoneNumber;
-  String gender;
-  DateTime birthDate;
-  DateTime updatedAt;
-  DateTime createdAt;
+  int? id;
+  String? fullName;
+  String? address;
+  String? email;
+  String? phoneNumber;
+  int? age;
+  String? gender;
+  String? habits;
+  DateTime? birthDate;
+  List<CreateComplaintModel>? complaints;
+  CreateDiseaseModel? diseases;
+  List<CreateAttachmentModel>? attachments;
+  DateTime? createdAt;
+  DateTime? updatedAt;
 
   PatientData({
-    required this.id,
-    required this.address,
-    required this.age,
-    required this.email,
-    required this.fullName,
-    required this.habits,
-    required this.phoneNumber,
-    required this.gender,
-    required this.birthDate,
-    required this.updatedAt,
-    required this.createdAt,
+    this.id,
+    this.fullName,
+    this.address,
+    this.email,
+    this.phoneNumber,
+    this.age,
+    this.gender,
+    this.habits,
+    this.birthDate,
+    this.complaints,
+    this.diseases,
+    this.attachments,
+    this.createdAt,
+    this.updatedAt,
   });
 
-  factory PatientData.fromJson(Map<String, dynamic> json) => PatientData(
-        id: json["id"],
-        address: json["address"],
-        age: json["age"],
-        email: json["email"],
-        fullName: json["fullName"],
-        habits: json["habits"],
-        phoneNumber: json["phoneNumber"],
-        gender: json["gender"],
-        birthDate: DateTime.parse(json["birthDate"]),
-        updatedAt: DateTime.parse(json["updatedAt"]),
-        createdAt: DateTime.parse(json["createdAt"]),
-      );
+  factory PatientData.fromJson(Map<String, dynamic> json) {
+    return PatientData(
+      id: json['id'] as int?,
+      fullName: json['fullName'] as String?,
+      address: json['address'] as String?,
+      email: json['email'] as String?,
+      phoneNumber: json['phoneNumber'] as String?,
+      age: json['age'] as int?,
+      gender: json['gender'] as String?,
+      habits: json['habits'] as String?,
+      birthDate:
+          json['birthDate'] != null ? DateTime.parse(json['birthDate']) : null,
+      complaints: json['complaints'] != null
+          ? List<CreateComplaintModel>.from(json['complaints']
+              .map((item) => CreateComplaintModel.fromJson(item)))
+          : null,
+      diseases: json['diseases'] != null
+          ? CreateDiseaseModel.fromJson(json['diseases'])
+          : null,
+      attachments: json['attachments'] != null
+          ? List<CreateAttachmentModel>.from(json['attachments']
+              .map((item) => CreateAttachmentModel.fromJson(item)))
+          : null,
+      createdAt:
+          json['createdAt'] != null ? DateTime.parse(json['createdAt']) : null,
+      updatedAt:
+          json['updatedAt'] != null ? DateTime.parse(json['updatedAt']) : null,
+    );
+  }
 
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "address": address,
-        "age": age,
-        "email": email,
-        "fullName": fullName,
-        "habits": habits,
-        "phoneNumber": phoneNumber,
-        "gender": gender,
-        "birthDate": birthDate.toIso8601String(),
-        "updatedAt": updatedAt.toIso8601String(),
-        "createdAt": createdAt.toIso8601String(),
-      };
+  String getAddress() {
+    return address ?? '';
+  }
 }

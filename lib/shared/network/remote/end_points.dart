@@ -1,7 +1,11 @@
-const clinic='clinic';
-const patient='patient';
-const medication='medication';
-const disease='disease';
+const clinic = 'clinic';
+const patient = 'patient';
+const patients = 'patients';
+const medication = 'medication';
+const disease = 'disease';
 const loginUrl = 'auth/login';
-const complaint ='complaint';
+const complaint = 'complaint';
 const attachments = 'attachments';
+const treatment = 'treatment';
+const treatmentPlan = 'treatment-plan';
+const completedTreatments = 'completed-treatments';

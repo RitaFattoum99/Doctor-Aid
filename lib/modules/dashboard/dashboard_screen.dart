@@ -1,5 +1,6 @@
 import 'package:draid/modules/addclinic/add_clinic.dart';
 import 'package:draid/layout/finance_layout/finance_layout.dart';
+import 'package:draid/modules/all_patients/all_patients.dart';
 import 'package:flutter/material.dart';
 import 'package:draid/modules/alltreatments/show_treatments.dart';
 import 'package:draid/modules/dashboard/item_container.dart';
@@ -35,10 +36,19 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   ),
                   Row(
                     children: [
-                      const Item(
-                        num: 200,
-                        text: 'سجلات المرضى',
-                      ),
+                      InkWell(
+                          child: const Item(
+                            num: 200,
+                            text: 'سجلات المرضى',
+                          ),
+                          onTap: () {
+                            navigateTo(
+                              context,
+                              const Directionality(
+                                  textDirection: TextDirection.rtl,
+                                  child: AllPatients()),
+                            );
+                          }),
                       const SizedBox(width: 20),
                       InkWell(
                         child: const Item(
