@@ -1,5 +1,6 @@
 import 'package:draid/layout/cubit/cubit.dart';
 import 'package:draid/layout/cubit/states.dart';
+import 'package:draid/modules/patient/show_basic_information.dart';
 import 'package:draid/modules/sidebar/side_bar_screen.dart';
 import 'package:draid/shared/components/components.dart';
 import 'package:draid/shared/styles/colors.dart';
@@ -72,27 +73,13 @@ class _AllPatientsState extends State<AllPatients> {
                                         fontSize: 28, color: blueText),
                                   ),
                                   const Spacer(),
-                                  Container(
-                                    width: 250,
-                                    height: 50,
-                                    decoration: BoxDecoration(
-                                      color: blueText,
-                                      borderRadius: BorderRadius.circular(30),
-                                    ),
-                                    child: InkWell(
-                                      onTap: () {},
-                                      child: const Padding(
-                                        padding: EdgeInsetsDirectional.only(
-                                            start: 30),
-                                        child: Row(children: [
-                                          SizedBox(width: 20),
-                                          Text(
-                                            'عرض الملف الشخصي',
-                                            style: TextStyle(
-                                                fontSize: 18,
-                                                color: Colors.white),
-                                          ),
-                                        ]),
+                                  Flexible(
+                                    child: SizedBox(
+                                      width: 200,
+                                      child: CustomSearchField(
+                                        icon: Icons.search,
+                                        hintText: 'بحث عن مريض',
+                                        controller: TextEditingController(),
                                       ),
                                     ),
                                   ),
@@ -144,7 +131,7 @@ class _AllPatientsState extends State<AllPatients> {
                                           ),
                                           SizedBox(width: 80),
                                           Text(
-                                            'العادات',
+                                            'الملف الشخصي',
                                             style: TextStyle(
                                                 fontSize: 18, color: fontColor),
                                           ),
@@ -206,11 +193,39 @@ class _AllPatientsState extends State<AllPatients> {
                                                       color: fontColor),
                                                 ),
                                                 const SizedBox(width: 80),
-                                                Text(
-                                                  patient.habits ?? '',
-                                                  style: const TextStyle(
-                                                      fontSize: 16,
-                                                      color: fontColor),
+                                                Container(
+                                                  width: 130,
+                                                  height: 35,
+                                                  decoration: BoxDecoration(
+                                                    color: coolGreen1,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            30),
+                                                  ),
+                                                  child: InkWell(
+                                                      onTap: () {
+                                                        Navigator.push(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                            builder: (context) =>
+                                                                ShowBasicInformation(
+                                                              // patientId:
+                                                              //     patient.id!,
+                                                              patientData:
+                                                                  patient,
+                                                            ),
+                                                          ),
+                                                        );
+                                                      },
+                                                      child: const Center(
+                                                        child: Text(
+                                                          '  عرض الملف الشخصي  ',
+                                                          style: TextStyle(
+                                                            fontSize: 12,
+                                                            color: white,
+                                                          ),
+                                                        ),
+                                                      )),
                                                 ),
                                                 const SizedBox(width: 75),
                                                 Container(

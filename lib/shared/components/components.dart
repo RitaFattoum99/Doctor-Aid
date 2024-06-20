@@ -4,8 +4,6 @@ import 'package:draid/shared/styles/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-
-
 class LoginFormField extends StatelessWidget {
   final String hintText;
   final Color color;
@@ -31,7 +29,7 @@ class LoginFormField extends StatelessWidget {
 }
 
 class LoginButtonWidget extends StatelessWidget {
-    final VoidCallback onPressed;
+  final VoidCallback onPressed;
 
   const LoginButtonWidget({
     required this.onPressed,
@@ -48,10 +46,35 @@ class LoginButtonWidget extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10.0), // Rounded corners
             )),
-        onPressed: onPressed, 
+        onPressed: onPressed,
         child: const Text(
           'تسجيل الدخول',
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
+      ),
+    );
+  }
+}
+
+class ItemBasicInformation extends StatelessWidget {
+  final String text;
+  const ItemBasicInformation({super.key, required this.text});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 50,
+      width: 400,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        border: Border.all(color: ColorManager.borderGreyColor, width: 2),
+        borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Text(
+          text,
+          style: const TextStyle(fontSize: 20, color: fontColor),
         ),
       ),
     );
@@ -547,6 +570,7 @@ class CustomSearchField extends StatelessWidget {
     );
   }
 }
+
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({super.key});
 

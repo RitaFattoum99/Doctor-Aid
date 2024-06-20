@@ -18,12 +18,17 @@ class DrAidAllPatientSuccessState extends DrAidStates {
   DrAidAllPatientSuccessState(this.allPatientsModel);
 }
 
+// class DrAidAllPatientSuccessState extends DrAidStates {
+//   final List<PatientData> patients;
+
+//   DrAidAllPatientSuccessState(this.patients);
+// }
+
 class DrAidErrorState extends DrAidStates {
   final String message;
 
   DrAidErrorState(this.message);
 }
-
 
 class DrAidInitialState extends DrAidStates {}
 

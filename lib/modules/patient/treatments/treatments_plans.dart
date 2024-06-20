@@ -789,7 +789,7 @@ class TreatmentsPlansScreen extends StatelessWidget {
           }
       );
     }
-
+    
     Widget treatmentPlanItem(){
       return Stack(
         alignment: Alignment.center,

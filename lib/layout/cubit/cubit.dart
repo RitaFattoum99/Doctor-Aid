@@ -748,11 +748,17 @@ class DrAidCubit extends Cubit<DrAidStates> {
   void printCurrentIndex() {}
 
   List<Widget> bottomPatientscreens = [
-    ShowBasicInformation(),
+    ShowBasicInformation(patientData: PatientData(),),
     MedicinesAndDiseases(),
     TreatmentsInformation(),
     const AttachmentsScreen(),
   ];
+
+  void updateShowBasicInformation(PatientData newPatientData) {
+    bottomPatientscreens[0] = ShowBasicInformation(patientData: newPatientData);
+    emit(DrAidPatientSuccessState(createPatientModel!)); 
+  }
+
   List<Widget> medicineanddiseasescreen = [
     const MedicineScreen(),
     const DiseaseScreen(),
